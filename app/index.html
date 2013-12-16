@@ -1,0 +1,125 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+        <title>leaflr | Conservation Calculator.</title>
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        
+        <link href='styles/main.css' rel='stylesheet' type='text/css'>
+        <!-- build:js scripts/vendor/modernizr.js -->
+        <script src="components/modernizr/modernizr.js"></script>
+        <!-- endbuild -->
+
+    </head>
+
+    <body>
+        <div id="wrapper">
+            <header>
+                <div class="page-title">Conservation Calculator.</div>
+                <div class="logo" onclick="location.href='http://leaflr.com';" style="cursor:pointer;">leaflr logo | Conservation Calculator.</div>
+            </header>
+            <div id="survey-choices-wrapper">
+                <div id="start-survey">
+                    <!-- on load -->
+                    <div id="start-options" class="options-wrapper">
+                        <h3>The fastest, easiest way to calculate conservation.</h3>
+                        <h5>How can you make an impact? Start by choosing ways you want to conserve.</h5>
+                        <!--<h3>What would you like to calculate?</h3>-->
+                        <div class="option transport" data-loads="#option1">
+                            <div class="icon"></div>
+                            <img class="icon-svg" src="images/icons/transport-color.svg">
+                            <h5>Transport</h5>
+                        </div>
+                        <div class="option utilities" data-loads="#option2">
+                            <div class="icon"></div>
+                            <img class="icon-svg" src="images/icons/utilities.svg">
+                            <h5>Utilities</h5>
+                        </div>
+                        <div class="option consumption" data-loads="#option3">
+                            <div class="icon"></div>
+                            <img class="icon-svg" src="images/icons/consumption.svg">
+                            <h5>Consumption</h5>
+                        </div>
+                    </div>   
+
+                    <div id="option1" class="options-wrapper">
+                        <h3>Which type of transportation?</h3>
+                        <div class="option transport start-bike-survey" data-loads="#option1">
+                            <div class="icon"></div>
+                            <img class="icon-svg" src="images/icons/bike.svg">
+                            <h5>Bike</h5>
+                        </div>
+                        <div class="option utilities" data-loads="#option2">
+                            <div class="icon"></div>
+                            <img class="icon-svg" src="images/icons/transport.svg">
+                            <h5>Auto</h5>
+                        </div>
+                        <div class="option consumption" data-loads="#option3">
+                            <div class="icon"></div>
+                            <img class="icon-svg" src="images/icons/transit.svg">
+                            <h5>Transit</h5>
+                        </div>
+                    </div>
+
+                    <div id="option2" class="options-wrapper">
+                        <h3>Which type of utility?</h3>
+                        <div class="option transport" data-loads="#option1">
+                            <div class="icon"></div>
+                            <img class="icon-svg" src="images/icons/transport.svg">
+                            Gas
+                        </div>
+                        <div class="option utilities" data-loads="#option2">
+                            <div class="icon"></div>
+                            <img class="icon-svg" src="images/icons/utilities.svg">
+                            Water
+                        </div>
+                        <div class="option consumption" data-loads="#option3">
+                            <div class="icon"></div>
+                            <img class="icon-svg" src="images/icons/consumption.svg">
+                            Electric
+                        </div>
+                    </div>
+
+                    <div id="option3" class="options-wrapper">
+                        <h3>Which type of consumption?</h3>
+                        <div class="option transport" data-loads="#option1">
+                            <div class="icon"></div>
+                            <img class="icon-svg" src="images/icons/transport.svg">
+                            Garbage
+                        </div>
+                        <div class="option utilities" data-loads="#option2">
+                            <div class="icon"></div>
+                            <img class="icon-svg" src="images/icons/utilities.svg">
+                            Recyclables
+                        </div>
+                        <div class="option consumption" data-loads="#option3">
+                            <div class="icon"></div>
+                            <img class="icon-svg" src="images/icons/consumption.svg">
+                            Yard Waste
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                <hr />
+
+                <div id="take-survey"></div>
+                <div id="survey-list"></div>
+                <img src="images/icons/checkmark.svg" id="preload-checkmark">
+                <!-- build:js scripts/main.js -->
+                <script data-main="scripts/init" src="components/requirejs/require.js"></script>
+                <!-- endbuild -->
+                <script src="//localhost:35729/livereload.js"></script>
+        </div>
+    </body>
+</html>

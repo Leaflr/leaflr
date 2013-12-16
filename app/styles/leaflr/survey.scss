@@ -1,0 +1,282 @@
+#survey-step {
+	margin-top: 40px;
+	position: relative;
+	text-align: center;
+	min-height: 275px;
+}
+#metric-sliders, #survey-step, .completed-surveys {
+	padding: 0 5%;
+}
+
+.choice {
+	width: 25%;
+	float: left;
+	text-align: center;
+	display: none;
+}
+.icon-wrapper {
+	width: 150px;
+	height: 150px;
+	margin: 0 auto;
+	margin-bottom: 10px;
+	position: relative;
+}
+.icon {
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	overflow: hidden;
+	margin: 0 auto;
+	position: relative;
+	text-align: center;
+	background-color: #DDE2E8;
+}
+.icon img {
+	width: 100%;
+	height: auto;
+	position: relative;
+	z-index: 10;
+}
+.icon-red {
+	background-color: #C0392A;
+}
+.icon-svg {
+	position: absolute;
+	width: 100%;
+	max-width: 150px;
+	top: 0px;
+	margin-left: -74px;
+}
+.icon:before {
+	content: '';
+	width: 100%;
+	height: 50%;
+	position: absolute;
+	display: inline-block;
+	top: 0;
+	left: 0;
+	background-color: rgba(0,0,0,.02);
+}
+.icon:after {
+	content: '';
+	width: 100%;
+	height: 50%;
+	display: inline-block;
+	position: absolute;
+	top: 50%;
+	left: 0;
+	background-color: transparent;
+}
+.not-checked, .not-checked .icon-svg {
+	-webkit-animation: notchecked 400ms cubic-bezier(0.610, 0.455, 0.000, 1);
+	-webkit-animation-fill-mode: both;
+}
+.checked.icon {
+    background-color: #2EB36C;
+
+    -webkit-animation: checked 400ms cubic-bezier(0.610, 0.455, 0.000, 1);
+	-webkit-animation-fill-mode: both;
+}
+.checked.icon-svg {
+	-webkit-animation: rotateIn 400ms;
+	-webkit-animation-fill-mode: both;
+}
+.checked.icon:before {
+	background-color: rgba(0,0,0,.05);
+}
+.checked.icon:after {
+	background-color: transparent;
+}
+
+.fade-out {
+	-webkit-animation: fade 400ms linear;
+	-webkit-animation-delay: 800ms;
+	-webkit-animation-fill-mode: both;
+}
+
+@-webkit-keyframes fade {
+    0%  {opacity: 1;}
+    100% {opacity: 0;}   
+}
+
+@-webkit-keyframes rotateIn {
+    0%  {-webkit-transform: rotateY(0deg);}
+    100% {-webkit-transform: rotateY(180deg);}   
+}
+
+@-webkit-keyframes checked {
+    0%  {-webkit-transform: rotate(0deg);}
+    100% {-webkit-transform: rotate(90deg);}   
+}
+
+@-webkit-keyframes notchecked {
+    0%  {-webkit-transform: scale(1);}
+    100% { opacity: .55; -webkit-transform: scale(.75);}   
+}
+
+/* METRIC INIDICATORS
+=====================*/
+
+.metric-sliders .slider {
+	width: 100%;
+	height: 16px;
+	background-color: #D4D5D9;
+	margin: 0 auto 8px;
+	position: relative;
+	text-align: center;
+	text-indent: -99999px;
+	border-radius: 10px;
+}
+.metric-sliders .value {
+	height: 16px;
+	border-radius: 8px;
+	background-color: rgba(0,0,0,.15);
+	position: absolute;
+	z-index: 5;
+	top: 0;
+	left: 0;
+	width: 0;
+	-webkit-transition: width 700ms cubic-bezier(0.610, 0.455, 0.000, 1); /* older webkit */
+-webkit-transition: width 700ms cubic-bezier(0.610, 0.455, 0.000, 1.135); 
+   -moz-transition: width 700ms cubic-bezier(0.610, 0.455, 0.000, 1.135); 
+     -o-transition: width 700ms cubic-bezier(0.610, 0.455, 0.000, 1.135); 
+        transition: width 700ms cubic-bezier(0.610, 0.455, 0.000, 1.135); /* custom */
+
+-webkit-transition-timing-function: cubic-bezier(0.610, 0.455, 0.000, 1); /* older webkit */
+-webkit-transition-timing-function: cubic-bezier(0.610, 0.455, 0.000, 1.135); 
+   -moz-transition-timing-function: cubic-bezier(0.610, 0.455, 0.000, 1.135); 
+     -o-transition-timing-function: cubic-bezier(0.610, 0.455, 0.000, 1.135); 
+        transition-timing-function: cubic-bezier(0.610, 0.455, 0.000, 1.135); /* custom */
+}
+.metric-sliders .type {
+	margin: 0;
+	position: relative;
+	z-index: 10;
+}
+.metric-slider .inactive {
+	background-color: rgba(0,0,0,.02);
+}
+.metric-slider .inactive .value {
+	width: 0;
+}
+.metric-sliders .oil .value {
+	background-color: #232829;
+}
+.metric-sliders .money .value {
+	background-color: #2ECC71;
+}
+.metric-sliders .gas .value {
+	background-color: #F39C12;
+}
+.metric-sliders .emissions .value {
+	background-color: #95A5A5;
+}
+.metric-sliders .calories .value {
+	background-color: #DEDE47;
+}
+
+/* SURVEY RESULTS
+=================*/
+
+.result {
+	width: 25%;
+	display: inline-block;
+	float: left;
+	padding-bottom: 20px;
+}
+.result-name {
+	font-weight: 600;
+	padding-bottom: 10px;
+	text-transform: capitalize;
+}
+.result-value {
+	font-size: 24px;
+	position: relative;
+	left: 1.4%;
+}
+.result-measurement {
+	opacity: .8;
+	font-size: 16px;
+}
+.result img {
+	width: 110px;
+	height: 110px;
+	padding-bottom: 15px;
+}
+.result span {
+	display: block;
+}
+.result.minus .result-value:before {
+	content: '-';
+	position: absolute;
+	margin-left: -10px;
+}
+.result.plus .result-value:before {
+	content: '+';
+	position: absolute;
+	margin-left: -13px;
+}
+.result-buttons {
+	@include clearfix;
+	margin-bottom: 20px;
+	display: none;
+	h5, p {
+		margin: 0px;
+	}
+}
+.result-buttons > div {
+	width: 50%;
+	height: 57px;
+	display: inline-block;
+	float: left;
+	text-align: center;
+	border: 3px solid tomato;
+	padding: 6px 0;
+}
+.pledge-results {
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+	background-color: tomato;
+	display: none;
+}
+.share-results {
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+
+/* COMPLETED SURVEYS
+====================*/
+
+.completed-surveys {
+	list-style-type: none;
+}
+.completed-surveys li {
+	background-color: #D4D5D9;
+	border-radius: 20px;
+	padding: 10px 20px;
+	text-transform: capitalize;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 18px;
+	color: #505460;
+}
+.completed-surveys .resources {
+	float: right;
+}
+.completed-surveys .resources div {
+	display: inline-block;
+}
+
+/* SURVEY FORM STYLES
+=====================*/
+
+#survey-step select {
+	width: 200px;
+	display: block;
+	margin: 0 auto 10px;
+}
+#survey-step select.inactive {
+	pointer-events: none;
+	opacity: .5;
+}
+
+
