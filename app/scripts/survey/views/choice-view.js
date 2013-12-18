@@ -19,6 +19,8 @@ function( Backbone, Communicator, choiceTemp ){
 
   		selected: function(){
         var self = this;
+        /* set answer to step model */
+        this.model.step.attributes.answer = this.model.attributes.name;
         
         this.$el.find('.icon').addClass('checked');
         this.$el.find('.icon-svg').addClass('checked').attr('src','images/icons/checkmark.svg');
