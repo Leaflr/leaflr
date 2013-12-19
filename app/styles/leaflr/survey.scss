@@ -4,7 +4,7 @@
 		padding: 10px 0;
 		height: 36px;
 
-		div {
+		.step-dot {
 			height: 20px;
 			width: 20px;
 			border-radius: 50%;
@@ -29,6 +29,22 @@
 			background-color: $money-color;
 			color: rgba(white, .9);
 		}
+	}
+}
+
+.step-slider {
+	height: 20px;
+	width: 100%;
+	margin: 0 auto;
+	outline: 1px solid tomato;
+	position: relative;
+	top: -24px;
+
+	.ui-slider-handle {
+		width: 24px;
+		height: 20px;
+		outline: 1px solid green;
+		position: absolute;
 	}
 }
 

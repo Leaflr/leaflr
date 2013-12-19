@@ -7,6 +7,7 @@ function( Backbone, Communicator, stepNavigatorTemp ){
 
 	return Backbone.Marionette.ItemView.extend({
   		template: stepNavigatorTemp,
+      className: 'step-dot',
 
   		events: {
   			'click':'activateStep'
@@ -35,10 +36,12 @@ function( Backbone, Communicator, stepNavigatorTemp ){
             this.$el.prev().css('display','inline-block');
 
             this.$el.css('display','inline-block');
-  				this.$el.siblings().removeClass('active-step');
-  				this.$el.addClass('active-step');
+  				  this.$el.siblings().removeClass('active-step');
+  				  this.$el.addClass('active-step');
 
-  				this.model.collection.each(function(model){ model.set('active', false) });
+            Communicator.events.trigger('stepActivated');
+
+  				  this.model.collection.each(function(model){ model.set('active', false) });
   			} 
   		},
 
