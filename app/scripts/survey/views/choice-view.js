@@ -23,6 +23,8 @@ function( Backbone, Communicator, choiceTemp ){
 
   		selected: function(){
         var self = this;
+        /* set answer to step model */
+        this.model.step.attributes.answer = this.model.attributes.name;
         
         // CSS animation classes
         this.$el.find('.icon').addClass('checked');

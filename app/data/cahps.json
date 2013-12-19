@@ -1,0 +1,756 @@
+{
+  "name": "Adult 12 Month",
+  "category": "healthcare",
+  "completed": true,
+  "resultTitle": "Patient Experience",
+  "metrics": [],
+  "steps": [
+    {
+      "title": "Our records show that you got care from the provider named below in the last 12 months.<br>Alan Williams",
+      "name": "Q1",
+      "choices": [
+        {
+          "name": "Yes",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q2",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "No",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q26",
+          "_onSelect": "function() {}"
+        }
+      ]
+    },
+    {
+      "title": "Is this the provider you usually see if you need a check-up, want advice about a health problem, or get sick or hurt?",
+      "name": "Q2",
+      "choices": [
+        {
+          "name": "Yes",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q3",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "No",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q3",
+          "_onSelect": "function() {}"
+        }
+      ]
+    },
+    {
+      "title": "How long have you been going to this provider?",
+      "name": "Q3",
+      "choices": [
+        {
+          "name": "Less than 6 months",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q4",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "At least 6 months but less than 1 year",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q4",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "At least 1 year but less than 3 years",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q4",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "At least 3 years but less than 5 yeras",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q4",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "5 yeras or more",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q4",
+          "_onSelect": "function() {}"
+        }
+      ]
+    },
+    {
+      "title": "In the last 12 months, how many times did you visit this provider to get care for yourself?",
+      "name": "Q4",
+      "choices": [
+        {
+          "name": "None",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q26",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "1 time",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q5",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "2 times",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q5",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "3 times",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q5",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "4 times",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q5",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "5 to 9 times",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q5",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "10 or more times",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q5",
+          "_onSelect": "function() {}"
+        }
+      ]
+    },
+    {
+      "title": "In the last 12 months, did you phone this provider’s office to get an appointment for an illness, injury, or condition that needed care right away? ",
+      "name": "Q5",
+      "choices": [
+        {
+          "name": "Yes",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q6",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "No",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q7",
+          "_onSelect": "function() {}"
+        }
+      ]
+    },
+    {
+      "title": "In the last 12 months, when you phoned this provider’s office to get an appointment for care you needed right away, how often did you get an appointment as soon as you needed?",
+      "name": "Q6",
+      "choices": [
+        {
+          "name": "Never",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q7",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "Sometimes",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q7",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "Usually",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q7",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "Always",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q7",
+          "_onSelect": "function() {}"
+        }
+      ]
+    },
+    {
+      "title": "In the last 12 months, did you make any appointments for a check-up or routine care with this provider?",
+      "name": "Q7",
+      "choices": [
+        {
+          "name": "Yes",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q8",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "No",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q9",
+          "_onSelect": "function() {}"
+        }
+      ]
+    },
+    {
+      "title": "In the last 12 months, when you made an appointment for a check-up or routine care with this provider, how often did you get an appointment as soon as you needed?",
+      "name": "Q8",
+      "choices": [
+        {
+          "name": "Never",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q9",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "Sometimes",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q9",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "Usually",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q9",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "Always",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q9",
+          "_onSelect": "function() {}"
+        }
+      ]
+    },
+    {
+      "title": "In the last 12 months, did you phone this provider's office with a medical question during regular office hours?",
+      "name": "Q9",
+      "choices": [
+        {
+          "name": "Yes",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q10",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "NO",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q11",
+          "_onSelect": "function() {}"
+        }
+      ]
+    },
+    {
+      "title": "In the last 12 months, when you phoned this provider's office during regular office hours, how often did you get an answer to your medical question that same day?",
+      "name": "Q10",
+      "choices": [
+        {
+          "name": "Never",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q11",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "Sometimes",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q11",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "Usually",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q11",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "Always",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q11",
+          "_onSelect": "function() {}"
+        }
+      ]
+    },
+    {
+      "title": "In the last 12 months, did you phone this provider's office with a medical question after regular office hours?",
+      "name": "Q11",
+      "choices": [
+        {
+          "name": "Yes",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q12",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "NO",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q13",
+          "_onSelect": "function() {}"
+        }
+      ]
+    },
+    {
+      "title": "In the last 12 months, when you phoned this provider’s office after regular office hours, how often did you get an answer to your medical question as soon as you needed?",
+      "name": "Q12",
+      "choices": [
+        {
+          "name": "Never",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q13",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "Sometimes",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q13",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "Usually",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q13",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "Always",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q13",
+          "_onSelect": "function() {}"
+        }
+      ]
+    },
+    {
+      "title": "Wait time includes time spent in the waiting room and exam room. In the last 12 months, how often did you see this provider within 15 minutes of your appointment time?",
+      "name": "Q13",
+      "choices": [
+        {
+          "name": "Never",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q14",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "Sometimes",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q14",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "Usually",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q14",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "Always",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q14",
+          "_onSelect": "function() {}"
+        }
+      ]
+    },
+    {
+      "title": "In the last 12 months, how often did this provider explain things in a way that was easy to understand? ",
+      "name": "Q14",
+      "choices": [
+        {
+          "name": "Never",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q15",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "Sometimes",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q15",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "Usually",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q15",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "Always",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q15",
+          "_onSelect": "function() {}"
+        }
+      ]
+    },
+    {
+      "title": "In the last 12 months, how often did this provider listen carefully to you? ",
+      "name": "Q15",
+      "choices": [
+        {
+          "name": "Never",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q16",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "Sometimes",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q16",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "Usually",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q16",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "Always",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q16",
+          "_onSelect": "function() {}"
+        }
+      ]
+    },
+    {
+      "title": "In the last 12 months, did you talk with this provider about any health questions or concerns?",
+      "name": "Q16",
+      "choices": [
+        {
+          "name": "Yes",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q17",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "No",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q18",
+          "_onSelect": "function() {}"
+        }
+      ]
+    },
+    {
+      "title": "In the last 12 months, how often did this provider give you easy to understand information about these health questions or concerns?",
+      "name": "Q17",
+      "choices": [
+        {
+          "name": "Never",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q18",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "Sometimes",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q18",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "Usually",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q18",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "Always",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q18",
+          "_onSelect": "function() {}"
+        }
+      ]
+    },
+    {
+      "title": "In the last 12 months, how often did this provider seem to know the important information about your medical history?",
+      "name": "Q18",
+      "choices": [
+        {
+          "name": "Never",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q19",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "Sometimes",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q19",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "Usually",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q19",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "Always",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q19",
+          "_onSelect": "function() {}"
+        }
+      ]
+    },
+    {
+      "title": "In the last 12 months, how often did this provider show respect for what you had to say?",
+      "name": "Q19",
+      "choices": [
+        {
+          "name": "Never",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q20",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "Sometimes",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q20",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "Usually",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q20",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "Always",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q20",
+          "_onSelect": "function() {}"
+        }
+      ]
+    },
+    {
+      "title": "In the last 12 months, how often did this provider spend enough time with you?",
+      "name": "Q20",
+      "choices": [
+        {
+          "name": "Never",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q21",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "Sometimes",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q21",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "Usually",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q21",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "Always",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q21",
+          "_onSelect": "function() {}"
+        }
+      ]
+    },
+    {
+      "title": "In the last 12 months, did this provider order a blood test, x-ray, or other test for you?",
+      "name": "Q21",
+      "choices": [
+        {
+          "name": "Yes",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q22",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "No",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q23",
+          "_onSelect": "function() {}"
+        }
+      ]
+    },
+    {
+      "title": "In the last 12 months, when this provider ordered a blood test, x-ray, or other test for you, how often did someone from this provider’s office follow up to give you those results?",
+      "name": "Q22",
+      "choices": [
+        {
+          "name": "Never",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q23",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "Sometimes",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q23",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "Usually",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q23",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "Always",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "Q23",
+          "_onSelect": "function() {}"
+        }
+      ]
+    },
+    {
+      "title": "Using any number from 0 to 10, where 0 is the worst provider possible and 10 is the best provider possible, what number would you use to rate this provider?",
+      "name": "Q23",
+      "choices": [
+        {
+          "name": "0 Worst Possible",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "end",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": 1,
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "end",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": 2,
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "end",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": 3,
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "end",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": 4,
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "end",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": 5,
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "end",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": 6,
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "end",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": 7,
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "end",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": 8,
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "end",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": 9,
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "end",
+          "_onSelect": "function() {}"
+        },
+        {
+          "name": "10 Best provider possible",
+          "iconClass": "sedan",
+          "icon": "sedan.svg",
+          "nextStep": "end",
+          "_onSelect": "function() {}"
+        }
+      ]
+    }
+  ]
+}
