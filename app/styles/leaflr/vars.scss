@@ -1,9 +1,28 @@
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700|Arvo:400,700);
 
+/* COLORS
+==========================*/
+
+$money-color: #2ECC71;
+$gas-color: #F39C12;
+$emissions-color: #95A5A5;
+$calories-color: #DEDE47;
+$oil-color: #232829;
+
+/* TYPOGRAPHY
+==========================*/
+
 @mixin arvo {
 	font-family: 'Arvo', serif;
 }
 
 @mixin sourcesans {
 	font-family: 'Source Sans Pro', sans-serif;
+}
+
+@mixin micro-text {
+	@include sourcesans;
+	font-weight: 700;
+	font-size: em(12);
+	text-transform: uppercase;
 }

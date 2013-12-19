@@ -1,3 +1,37 @@
+#step-navigator {
+	.step-indicators {
+		text-align: center;
+		padding: 10px 0;
+		height: 36px;
+
+		div {
+			height: 20px;
+			width: 20px;
+			border-radius: 50%;
+			display: inline-block;
+			margin: 0 4px;
+			background-color: #DDE2E8;
+			display: none;
+		}
+		.active-step {
+			background-color: tomato;
+		}
+		.results {
+			position: relative;
+			top: -6px;
+			width: auto;
+			padding: 2px 7px 0;
+			@include micro-text;
+			color: rgba(black,.6);
+			border-radius: 10px;
+		}
+		.results.active-step {
+			background-color: $money-color;
+			color: rgba(white, .9);
+		}
+	}
+}
+
 #survey-step {
 	margin-top: 40px;
 	position: relative;
@@ -67,6 +101,7 @@
 	left: 0;
 	background-color: transparent;
 }
+
 .not-checked, .not-checked .icon-svg {
 	-webkit-animation: notchecked 400ms cubic-bezier(0.610, 0.455, 0.000, 1);
 	-webkit-animation-fill-mode: both;
@@ -87,6 +122,23 @@
 .checked.icon:after {
 	background-color: transparent;
 }
+
+
+.chosen.icon-wrapper:after {
+	position: relative;
+	top: -53px;
+	@include micro-text;
+	font-size: em(11);
+	font-weight: 600;
+	content: 'you chose';
+	color: rgba(white, .85);
+}
+.chosen .icon-svg {
+	top: 7px;
+	margin-left: -60px;
+	width: 80%;
+}
+
 
 .fade-out {
 	-webkit-animation: fade 400ms linear;
@@ -126,11 +178,11 @@
 	text-align: center;
 	text-indent: -99999px;
 	border-radius: 10px;
+	// box-shadow: inset 1px 1px 5px rgba(0,0,0,.08);
 }
 .metric-sliders .value {
 	height: 16px;
 	border-radius: 8px;
-	background-color: rgba(0,0,0,.15);
 	position: absolute;
 	z-index: 5;
 	top: 0;
@@ -148,6 +200,17 @@
      -o-transition-timing-function: cubic-bezier(0.610, 0.455, 0.000, 1.135); 
         transition-timing-function: cubic-bezier(0.610, 0.455, 0.000, 1.135); /* custom */
 }
+.metric-sliders .past-value {
+	height: 16px;
+	border-radius: 8px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 0;
+	background-color: rgba(0,0,0,.1);
+	z-index: 6;
+	display: none;
+}
 .metric-sliders .type {
 	margin: 0;
 	position: relative;
@@ -159,20 +222,38 @@
 .metric-slider .inactive .value {
 	width: 0;
 }
-.metric-sliders .oil .value {
-	background-color: #232829;
+
+
+.metric-sliders .oil .value, .metric-sliders .oil .past-value {
+	background-color: $oil-color;
 }
-.metric-sliders .money .value {
-	background-color: #2ECC71;
+.metric-sliders .money .value, .metric-sliders .money .past-value {
+	background-color: $money-color;
 }
-.metric-sliders .gas .value {
-	background-color: #F39C12;
+.metric-sliders .gas .value, .metric-sliders .gas .past-value {
+	background-color: $gas-color;
 }
-.metric-sliders .emissions .value {
-	background-color: #95A5A5;
+.metric-sliders .emissions .value, .metric-sliders .emissions .past-value {
+	background-color: $emissions-color;
 }
-.metric-sliders .calories .value {
-	background-color: #DEDE47;
+.metric-sliders .calories .value, .metric-sliders .calories .past-value {
+	background-color: $calories-color;
+}
+
+.metric-sliders .gas .inactive-slider {
+	background-color: lighten($gas-color, 11%);
+}
+.metric-sliders .oil .inactive-slider {
+	background-color: lighten($oil-color, 11%);
+}
+.metric-sliders .money .inactive-slider {
+	background-color: lighten($money-color, 11%);
+}
+.metric-sliders .emissions .inactive-slider {
+	background-color: lighten($emissions-color, 11%);
+}
+.metric-sliders .calories .inactive-slider {
+	background-color: lighten($calories-color, 11%);
 }
 
 /* SURVEY RESULTS

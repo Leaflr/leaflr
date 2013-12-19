@@ -12,6 +12,7 @@ function( Backbone, Communicator, stepModel, metricModel ) {
 		idAttribute: '_id',
 		defaults: {
 			name: '',
+			status: 'inactive'
 		},
 
 		initialize: function(){

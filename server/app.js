@@ -56,6 +56,11 @@ db.once('open', function callback () {
 	  res.sendfile( path.join( __dirname, '../app/index.html' ) );
 	});
 
+	// app.use(function(req, res) {
+ //  		var newUrl = req.protocol + '://' + req.get('Host') + '/#' + req.url;
+ //  		return res.redirect(newUrl);
+	// });
+
 	// start server
 	http.createServer(app).listen(app.get('port'), function(){
 	    console.log('Express App started!');

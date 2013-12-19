@@ -2,12 +2,13 @@ define([
 	'backbone',
 	'communicator',
 	'survey/views/metric-sliders-view',
+    'survey/views/steps-navigator-view',
 	'survey/views/choices-view',
     'survey/views/custom-step-view',
     'survey/views/survey-complete-view',
 	'hbs!tmpl/survey/take-survey',
     'handlebars',],
-function( Backbone, Communicator, metricSlidersView, choicesView, customStepView, surveyCompleteView, takeSurveyTemp, Handlebars ){
+function( Backbone, Communicator, metricSlidersView, stepsNavigatorView, choicesView, customStepView, surveyCompleteView, takeSurveyTemp, Handlebars ){
 	'use strict';
 
     Backbone.Marionette.Region.prototype.closeAnimate = function(view){
@@ -35,6 +36,7 @@ function( Backbone, Communicator, metricSlidersView, choicesView, customStepView
 
     	regions: {
     	  metricSliders: "#metric-sliders",
+          stepNavigator: '#step-navigator',
     	  surveyStep: "#survey-step"
     	},
 
@@ -49,27 +51,31 @@ function( Backbone, Communicator, metricSlidersView, choicesView, customStepView
                     var nextStepModel = _.find( self.model.get('steps').models, function(step){
                         return step.get('name') == stepName;
                     });
+                    nextStepModel.set('active', true);
                     self.compileStep( nextStepModel );
                 }
     		});
     	},
 
     	onRender: function(){
-    		var metrics = this.model.get('metrics');
+    		var metrics = this.model.get('metrics'),
+                steps = this.model.get('steps');
 			
 			// initialize metric sliders
     		this.metricSliders.show( new metricSlidersView({ collection: metrics }) );
+            this.stepNavigator.show( new stepsNavigatorView({ collection: steps }) );
 
     		// compile first step
     		this.compileStep();
     	},
 
         endSurvey: function(){
-        
+            
+            this.$el.find('#step-navigator .results').css('display','inline-block').addClass('active-step').siblings().removeClass('active-step');
+
             Communicator.events.trigger('endSurvey', this.model);
 
             var results = this.model.results;
-            console.log('complete',this.model)
 
             // Calculations
             var gallons = ((results.tripdistance * (results.hwyper / 100)) / results.carmpghwy) + ((results.tripdistance * ((100 - results.hwyper) / 100)) / results.carmpgcity);
@@ -127,7 +133,7 @@ function( Backbone, Communicator, metricSlidersView, choicesView, customStepView
         	else step = step.get('choices');
         	
         	this.currentStep = step;
-        	console.log(this.model.history)
+        	
             // sets view depending on type of step
             if ( step && step.get('template') )
             view = new customStepView({ model: step, template: step.get('template') });
