@@ -29,7 +29,7 @@ define([
   // Pull in the JSON.
  var rs = $.ajax({
    dataType: 'json',
-   url: 'data/cahps.json',
+   url: 'data/leaflr.json',
    type: 'GET',
    async: false,
    success: function(data, textStatus, err) {
