@@ -3,6 +3,7 @@
   "category": "transit",
   "completed": true,
   "resultTitle": "By biking to work you saved",
+  "theme": "leaflr",
   "metrics": [
     {
       "name": "gas",

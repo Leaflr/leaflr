@@ -17,6 +17,7 @@ function( Backbone, Communicator, choiceView, choicesTemp ){
   		onRender: function(){
   			var step = this.collection.parents[0],
             survey = step.survey,
+            theme  = step.survey.theme,
             stepTitle = step.get('title'),
             historyEntry,
             selectedChoiceView;
@@ -41,7 +42,7 @@ function( Backbone, Communicator, choiceView, choicesTemp ){
           // add classes to choices to indicate which were chosen
           selectedChoiceView.$el.find('.icon-wrapper').addClass('chosen');
           selectedChoiceView.$el.find('.icon').addClass('checked');
-          selectedChoiceView.$el.find('.icon-svg').addClass('checked').attr('src','images/icons/checkmark.svg');
+          selectedChoiceView.$el.find('.icon-svg').addClass('checked').attr('src','themes/'+theme+'/images/icons/checkmark.svg');
           selectedChoiceView.$el.siblings().find('.icon-wrapper').addClass('not-checked');
 
           // set history on step model to show selected values on metric sliders 

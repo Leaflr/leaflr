@@ -1,20 +1,20 @@
 define([
-	'backbone',
-	'communicator',
-	'survey/models/survey-model',
-	'survey/models/step-model',
-	'survey/models/choice-model',
-  'survey/models/metric-model',
-  'hbs!tmpl/survey/custom-step-vehicle',
+    'backbone',
+    'communicator',
+    'survey/models/survey-model',
+    'survey/models/step-model',
+    'survey/models/choice-model',
+    'survey/models/metric-model',
+    'hbs!tmpl/survey/custom-step-vehicle',
 ], function(
-  Backbone,
-  Communicator,
-  surveyModel,
-  stepModel,
-  choiceModel,
-  metricModel,
-  specificVehicleTemp ) {
-  'use strict';
+    Backbone,
+    Communicator,
+    surveyModel,
+    stepModel,
+    choiceModel,
+    metricModel,
+    specificVehicleTemp ) {
+    'use strict';
 
   //  vehicleType       = new stepModel({ title: 'What type of vehicle do you have?' }),
   //  fuelType          = new stepModel({ title: 'What type of fuel does your vehicle take?' }),
@@ -26,72 +26,77 @@ define([
  //    tripFrequency     = new stepModel({ title: 'How often will you ride your bike?' }),
  //    foo               = new stepModel({ title: 'foo' }),
 
-  // Pull in the JSON.
- var rs = $.ajax({
-   dataType: 'json',
-   url: 'data/leaflr.json',
-   type: 'GET',
-   async: false,
-   success: function(data, textStatus, err) {
-     return data;
-   } 
- });
- var raw = eval('('+rs.responseText+')');
-
-  /* Compile JSON Survey
-   * =================== */
-  function compileSurvey(obj) {
-    for(var k in obj) {
-      var v = obj[k];
-      if(typeof obj[k] == "object" && obj[k] !== null) {
-        compileSurvey(obj[k]); // Recurse 
-      } else {
-        if(k.match(/^_/)) {   // Match the underscore
-          obj[k.replace(/_/g, '')] = eval('('+v+')');
-        }
-      }
-    }   
-    return obj;
-  }
-
-  // Do the compile
-  console.log('Compiling Survey');
-  raw = compileSurvey(raw);
-
-  /* Build Metrics array
-   * =================== */
-  var metricsArray = [];
-  $.each(raw.metrics, function(index, val){
-    metricsArray[index] = new metricModel(val, {parse: true});
-  });
-
-  /* Build Step Array
-   * ================ */
-  var stepsArray = [];
-  $.each(raw.steps, function(index, val) {
-    /* Build Choice Array
-     * ================== */
-    var choiceArray = [];
-    $.each(val.choices, function(i, v){
-      choiceArray[i] = new choiceModel(v, {parse: true});
+    /* Pull in JSON survey
+     * =================== */
+    var rs = $.ajax({
+        dataType: 'json',
+        url: 'data/leaflr.json',
+        type: 'GET',
+        async: false,
+        success: function(data, textStatus, err) {
+            return data;
+        } 
     });
-    stepsArray[index] = new stepModel({
-      title: val.title,
-      name: val.name,
-      choices: choiceArray
-    }); 
-  });
 
-  /* Build Survey
-   * ============ */
-  var survey = new surveyModel({
-    name: raw.name,
-    category: raw.category,
-    resultTitle: raw.resultTitle,
-    metrics: metricsArray,
-    steps: stepsArray
-  });
-  console.log(survey);
+    var raw = eval('('+rs.responseText+')');
+    console.log(raw);
+
+    /* Compile JSON Survey
+     * =================== */
+    function compileSurvey(obj) {
+        for(var k in obj) {
+            var v = obj[k];
+            if(typeof obj[k] == "object" && obj[k] !== null) {
+                compileSurvey(obj[k]); // Recurse 
+            } else {
+                if(k.match(/^_/)) {   // Match the underscore
+                    obj[k.replace(/_/g, '')] = eval('('+v+')');
+                }
+            }
+        }   
+        return obj;
+    }
+
+    // Do the compile
+    console.log('Compiling Survey');
+
+    /* Build Metrics array
+     * =================== */
+    var metricsArray = [];
+    $.each(raw.metrics, function(index, val){
+        val.theme = raw.theme;
+        metricsArray[index] = new metricModel(val, {parse: true});
+    });
+
+    /* Build Step Array
+     * ================ */
+    var stepsArray = [];
+    $.each(raw.steps, function(index, val) {
+        /* == Build Choice Array == */
+        var choiceArray = [];
+        $.each(val.choices, function(i, v){
+            v.theme = raw.theme;
+            choiceArray[i] = new choiceModel(v, {parse: true});
+        });
+        stepsArray[index] = new stepModel({
+            title: val.title,
+            name: val.name,
+            theme: raw.theme,
+            choices: choiceArray
+        }); 
+    });
+
+    /* Build Survey
+     * ============ */
+    var survey = new surveyModel({
+        name: raw.name,
+        theme: raw.theme,
+        category: raw.category,
+        resultTitle: raw.resultTitle,
+        metrics: metricsArray,
+        steps: stepsArray
+    });
+    console.log(survey);
 
 /* ====== DO NOT DELETE COMMENTED OUT CODE ====== */
 /*   ====== NEED TO REFERENCE AJAX CALLS ======== */
