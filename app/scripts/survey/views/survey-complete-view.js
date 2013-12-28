@@ -4,6 +4,7 @@ define(['backbone','survey/views/survey-complete-single-view','hbs!tmpl/survey/s
 	return Backbone.Marionette.CompositeView.extend({
 		template: surveyComplete,
 		itemView: surveyCompleteSingle,
-		itemViewContainer: '.survey-results'
+		itemViewContainer: '.survey-results',
+		className: 'results'
 	});
 });

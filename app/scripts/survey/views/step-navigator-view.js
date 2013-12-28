@@ -12,30 +12,46 @@ function( Backbone, Communicator, stepNavigatorTemp ){
   		events: {
   			'click':'activateStep'
   		},
+
+      attributes: function(){
+        return {
+          'data-model': this.model.cid
+        }
+      },
   		
   		initialize: function(){
   			this.model.on('change:active', this.isActive, this);
+        this.model.on('sliderSelected', this.sliderSelected, this)
   		},
 
   		activateStep: function(e){
          // compile next step if it has been completed or is next available step      
   			if ( this.model.has('completed') || this.model.get('viewed') == true ){
   				Communicator.events.trigger('nextStep', this.model.get('name') );
-  				if ( this.model.has('history') )
+  				
+          if ( this.model.has('history') )
   				this.highlightValues();
   				else
   				this.reactivateSliders();
   			} 
   		},
 
+      sliderSelected: function(){
+          if ( this.model.has('history') )
+          this.highlightValues();
+          else
+          this.reactivateSliders();
+      },
+
   		isActive: function(){
+
          // checks for currently active step and highlights step indicator
   			if ( this.model.get('active') == true ){
             // reveals first 2 steps when second choice is active
             if ( this.$el.index() == 1 )
-            this.$el.prev().css('display','inline-block');
+            this.$el.prev().css('display','inline-block').text(1);
 
-            this.$el.css('display','inline-block');
+            this.$el.css('display','inline-block').text( this.$el.index() + 1 );
   				  this.$el.siblings().removeClass('active-step');
   				  this.$el.addClass('active-step');
 

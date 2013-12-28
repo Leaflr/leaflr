@@ -1,8 +1,12 @@
+#metric-sliders, #survey-steps, .completed-surveys {
+	padding: 0 5%;
+}
+
 #step-navigator {
 	.step-indicators {
 		text-align: center;
 		padding: 10px 0;
-		height: 36px;
+		height: 46px;
 
 		.step-dot {
 			height: 20px;
@@ -11,10 +15,17 @@
 			display: inline-block;
 			margin: 0 4px;
 			background-color: #DDE2E8;
+			font-size: em(13);
+			font-weight: 700;
+			padding-top: 2px;
+			color: rgba(0,0,0,.6);
+			text-align: center;
 			display: none;
 		}
 		.active-step {
 			background-color: tomato;
+			color: white;
+			// font-weight: 400;
 		}
 		.results {
 			position: relative;
@@ -36,36 +47,49 @@
 	height: 20px;
 	width: 100%;
 	margin: 0 auto;
-	outline: 1px solid tomato;
+	// outline: 1px solid tomato;
 	position: relative;
 	top: -24px;
 
 	.ui-slider-handle {
 		width: 24px;
 		height: 20px;
-		outline: 1px solid green;
+		// outline: 1px solid green;
 		position: absolute;
 	}
 }
 
-#survey-step {
+#survey-steps {
 	margin-top: 40px;
 	position: relative;
 	text-align: center;
 	min-height: 275px;
-}
-#metric-sliders, #survey-step, .completed-surveys {
-	padding: 0 5%;
+	overflow: hidden;
+	
+	.steps {
+		position: relative;
+
+		.step {
+			width: 100%;
+			position: absolute;
+			opacity: 0;
+			background-color: $light;
+			@include transform( translateX(1000px) );
+
+			&:first-child {
+				opacity: 1;
+				@include transform( translateX(0px) );
+			}
+		}
+	}
 }
 
 .choice {
-	width: 25%;
-	float: left;
+	@include span-columns(3);
 	text-align: center;
-	display: none;
 }
 .icon-wrapper {
-	width: 150px;
+	// width: 150px;
 	height: 150px;
 	margin: 0 auto;
 	margin-bottom: 10px;
@@ -156,15 +180,46 @@
 }
 
 
-.fade-out {
-	-webkit-animation: fade 400ms linear;
-	-webkit-animation-delay: 800ms;
-	-webkit-animation-fill-mode: both;
+.slide-in {
+	@include animation( slidein 300ms );
+	@include animation-timing-function( cubic-bezier(0.975, -0.115, 1.000, 0.495) );
+	// @include animation-delay(400ms);
+	@include animation-fill-mode(both);
+}
+.slide-out {
+	@include animation( slideout 200ms );
+	@include animation-timing-function( cubic-bezier(0.975, -0.2, 1.000, 1) );
+	// @include animation-delay(580ms);
+	@include animation-fill-mode(both);
 }
 
-@-webkit-keyframes fade {
-    0%  {opacity: 1;}
-    100% {opacity: 0;}   
+.slide-in-fast {
+	@include animation( slidein 50ms );
+	@include animation-timing-function( cubic-bezier(0.975, -0.115, 1.000, 0.495) );
+	// @include animation-delay(400ms);
+	@include animation-fill-mode(both);
+}
+.slide-out-fast {
+	@include animation( slideout 50ms );
+	@include animation-timing-function( cubic-bezier(0.975, -0.2, 1.000, 1) );
+	// @include animation-delay(580ms);
+	@include animation-fill-mode(both);
+}
+
+
+
+@-webkit-keyframes slideout {
+    100%  { opacity: 0; @include transform( translateX(-1000px) ); }
+}
+@-webkit-keyframes slidein {
+    100%  { opacity: 1; @include transform( translateX(0px) ); }
+}
+
+
+#survey-steps .steps .reset-animation {
+	@include transform( translateX(0px) );
+	z-index: 10;
+	opacity: 1;
 }
 
 @-webkit-keyframes rotateIn {

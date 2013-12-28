@@ -3,12 +3,13 @@ define([
 	'communicator',
 	'survey/views/metric-sliders-view',
     'survey/views/steps-navigator-view',
+    'survey/views/steps-view',
 	'survey/views/choices-view',
     'survey/views/custom-step-view',
     'survey/views/survey-complete-view',
 	'hbs!tmpl/survey/take-survey',
     'handlebars',],
-function( Backbone, Communicator, metricSlidersView, stepsNavigatorView, choicesView, customStepView, surveyCompleteView, takeSurveyTemp, Handlebars ){
+function( Backbone, Communicator, metricSlidersView, stepsNavigatorView, stepsView, choicesView, customStepView, surveyCompleteView, takeSurveyTemp, Handlebars ){
 	'use strict';
 
     Backbone.Marionette.Region.prototype.closeAnimate = function(view){
@@ -37,7 +38,7 @@ function( Backbone, Communicator, metricSlidersView, stepsNavigatorView, choices
     	regions: {
     	  metricSliders: "#metric-sliders",
           stepNavigator: '#step-navigator',
-    	  surveyStep: "#survey-step"
+    	  surveySteps: "#survey-steps"
     	},
 
     	initialize: function(){
@@ -48,11 +49,7 @@ function( Backbone, Communicator, metricSlidersView, stepsNavigatorView, choices
     			if ( stepName == 'end' ){
                     self.endSurvey(); 
                 } else {
-                    var nextStepModel = _.find( self.model.get('steps').models, function(step){
-                        return step.get('name') == stepName;
-                    });
-                    nextStepModel.set('active', true);
-                    self.compileStep( nextStepModel );
+                    self.nextStep( stepName );
                 }
     		});
     	},
@@ -64,10 +61,24 @@ function( Backbone, Communicator, metricSlidersView, stepsNavigatorView, choices
 			// initialize metric sliders
     		this.metricSliders.show( new metricSlidersView({ collection: metrics }) );
             this.stepNavigator.show( new stepsNavigatorView({ collection: steps }) );
+            this.surveySteps.show( new stepsView({ collection: steps }) );
 
     		// compile first step
-    		this.compileStep();
+    		// this.compileStep();
     	},
+
+        nextStep: function( stepName ){
+            var nextStepModel = _.find( this.model.get('steps').models, function(step){
+                return step.get('name') == stepName;
+            }), 
+            nextStepView;
+
+            nextStepModel.set('active', true);
+                    
+            nextStepView = this.surveySteps.currentView.children.findByModel( nextStepModel );
+            nextStepView.activateStep();
+                    
+        },
 
         endSurvey: function(){
             
@@ -104,7 +115,9 @@ function( Backbone, Communicator, metricSlidersView, stepsNavigatorView, choices
 
             this.metricSliders.closeAnimate();
 
-            this.surveyStep.show( new surveyCompleteView({ collection: this.model.get('metrics') }))
+            var surveyCompleted = new surveyCompleteView({ collection: this.model.get('metrics') });
+            surveyCompleted.render();
+            this.surveySteps.$el.append( surveyCompleted.el );
 
             /* Send data to database
              * ===================== */
@@ -121,10 +134,8 @@ function( Backbone, Communicator, metricSlidersView, stepsNavigatorView, choices
     	compileStep: function( step ){
     		var steps = this.model.get('steps').models,
     			step,
-                view,
-                parent,
-    			stepsContent = [];
-                // console.log(steps)
+                view;
+                
             // if first step in survey, show first set of choices
         	if ( !step ) step = steps[0].get('choices');
             // if custom step
