@@ -23,3 +23,6 @@ First make sure that you have Node, NPM, MongoDB, Bower & Grunt installed.
 5. Install Grunt (if its not installed globally) ```$ npm install grunt```
 
 That should do it for the install. If you run into problems, try installing bower & grunt globally ```$ npm install -g <module>```
+
+## License
+Leaflr is released under the MIT License.

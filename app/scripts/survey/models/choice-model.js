@@ -7,14 +7,13 @@ define(['backbone','communicator','backbone.associations'], function( Backbone, 
 	return Backbone.AssociatedModel.extend({
 		idAttribute: '_id',
 		defaults: {
-			returnValue: '',
-			nextStep: ''
+            returnValue: '',
+            nextStep: ''
 		},
 
 		constructor: function(){
 
 			Backbone.AssociatedModel.apply(this, arguments);
-			
 			this.onSelect = function( ){  }
 		},
 
@@ -43,7 +42,7 @@ define(['backbone','communicator','backbone.associations'], function( Backbone, 
 
 		saveMetric: function( metricValues ){
 			var historyEntry = this.getHistoryEntry();
-			console.log(this)
+			console.log('saveMetric',this)
 			// reset values
 			this.history.values = []
 			

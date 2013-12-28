@@ -23,16 +23,16 @@ function( Backbone, Communicator, stepModel, metricModel ) {
 		},
 
 		relations: [
-	      {
-	        type: Backbone.Many,
-	        key: 'steps', 
-	        relatedModel: stepModel, 
-	      },
-	      {
-	        type: Backbone.Many,
-	        key: 'metrics',
-	        relatedModel: metricModel
-	      }
+            {
+              type: Backbone.Many,
+              key: 'steps', 
+              relatedModel: stepModel, 
+            },
+            {
+              type: Backbone.Many,
+              key: 'metrics',
+              relatedModel: metricModel
+            }
   		]
 	});
 });

@@ -16,15 +16,15 @@ define([
     specificVehicleTemp ) {
     'use strict';
 
-  //  vehicleType       = new stepModel({ title: 'What type of vehicle do you have?' }),
-  //  fuelType          = new stepModel({ title: 'What type of fuel does your vehicle take?' }),
- //    roadType          = new stepModel({ title: 'What type of road is your commute?' }),
- //    distanceTraveled  = new stepModel({ title: 'How far do you commute?' }),
-  //  specificDistance  = new stepModel({ title: 'specific distance' }),
-  //  specificVehicle   = new stepModel({ title: 'Select your vehicle' }),
-  //  userLocation      = new stepModel({ title: 'What is your location?' }),
- //    tripFrequency     = new stepModel({ title: 'How often will you ride your bike?' }),
- //    foo               = new stepModel({ title: 'foo' }),
+    //  vehicleType       = new stepModel({ title: 'What type of vehicle do you have?' }),
+    //  fuelType          = new stepModel({ title: 'What type of fuel does your vehicle take?' }),
+    //  roadType          = new stepModel({ title: 'What type of road is your commute?' }),
+    //  distanceTraveled  = new stepModel({ title: 'How far do you commute?' }),
+    //  specificDistance  = new stepModel({ title: 'specific distance' }),
+    //  specificVehicle   = new stepModel({ title: 'Select your vehicle' }),
+    //  userLocation      = new stepModel({ title: 'What is your location?' }),
+    //  tripFrequency     = new stepModel({ title: 'How often will you ride your bike?' }),
+    //  foo               = new stepModel({ title: 'foo' }),
 
     /* Pull in JSON survey
      * =================== */
