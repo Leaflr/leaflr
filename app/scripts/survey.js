@@ -28,76 +28,87 @@ define([
 
     /* Pull in JSON survey
      * =================== */
+    var survey = {} 
     var loaded_survey = $.ajax({
         dataType: 'json',
         url: 'data/leaflr.json',
         type: 'GET',
         async: false,
+        complete: function(data, res, xhr) {
+            survey = build_survey(data);
+        }
     });
 
-    var  compiled_survey = compileSurvey(
-        eval('('+loaded_survey.responseText+')')
-    );
+     
+    function build_survey(loaded_survey) {
+        var  compiled_survey = compileSurvey(
+            eval('('+loaded_survey.responseText+')')
+        );
 
 
-    // Do the compile
-    console.log('Compiling Survey');
+        // Do the compile
+        console.log('Compiling Survey');
 
-    /* Build Metrics array
-     * =================== */
-    var metricsArray = [];
-    $.each(compiled_survey.metrics, function(index, val){
-        val.theme = compiled_survey.theme;
-        metricsArray[index] = new metricModel(val, {parse: true});
-    });
-
-    /* Build Step Array
-     * ================ */
-    var stepsArray = [];
-    $.each(compiled_survey.steps, function(index, val) {
-        /* == Build Choice Array == */
-        var choiceArray = [];
-        $.each(val.choices, function(i, v){
-            v.theme = compiled_survey.theme;
-            choiceArray[i] = new choiceModel(v, {parse: true});
+        /* Build Metrics array
+         * =================== */
+        var metricsArray = [];
+        $.each(compiled_survey.metrics, function(index, val){
+            val.theme = compiled_survey.theme;
+            metricsArray[index] = new metricModel(val, {parse: true});
         });
-        stepsArray[index] = new stepModel({
-            title: val.title,
-            name: val.name,
+
+        /* Build Step Array
+         * ================ */
+        var stepsArray = [];
+        $.each(compiled_survey.steps, function(index, val) {
+            /* == Build Choice Array == */
+            var choiceArray = [];
+            $.each(val.choices, function(i, v){
+                v.theme = compiled_survey.theme;
+                choiceArray[i] = new choiceModel(v, {parse: true});
+            });
+            stepsArray[index] = new stepModel({
+                title: val.title,
+                name: val.name,
+                theme: compiled_survey.theme,
+                choices: choiceArray
+            }); 
+        });
+
+        /* Build Survey
+         * ============ */
+        var survey = new surveyModel({
+            name: compiled_survey.name,
             theme: compiled_survey.theme,
-            choices: choiceArray
-        }); 
-    });
-
-    /* Build Survey
-     * ============ */
-    var survey = new surveyModel({
-        name: compiled_survey.name,
-        theme: compiled_survey.theme,
-        category: compiled_survey.category,
-        resultTitle: compiled_survey.resultTitle,
-        metrics: metricsArray,
-        steps: stepsArray
-    });
+            category: compiled_survey.category,
+            resultTitle: compiled_survey.resultTitle,
+            metrics: metricsArray,
+            steps: stepsArray
+        });
 
 
-    /* Compile JSON Survey
-     * =================== */
-    function compileSurvey(obj) {
-        for(var k in obj) {
-            var v = obj[k];
-            if(typeof obj[k] == "object" && obj[k] !== null) {
-                compileSurvey(obj[k]); // Recurse 
-            } else {
-                if(k.match(/^_/)) {   // Match the underscore
-                    obj[k.replace(/_/g, '')] = eval('('+v+')');
-                    delete obj[k];
+        /* Compile JSON Survey
+         * =================== */
+        function compileSurvey(obj) {
+            for(var k in obj) {
+                var v = obj[k];
+                if(typeof obj[k] == "object" && obj[k] !== null) {
+                    compileSurvey(obj[k]); // Recurse until match
+                } else {
+                    if(k.match(/^_/)) {   // Match the underscore
+                        obj[k.replace(/_/g, '')] = eval('('+v+')');
+                        delete obj[k];
+                    }
                 }
-            }
-        }   
-        return obj;
+            }   
+            return obj;
+        }
+        console.log('SURVEY LOADED',survey);
+        return survey;
     }
-    console.log('SURVEY LOADED',survey);
+    return survey;
+
+});
 
 /* ====== DO NOT DELETE COMMENTED OUT CODE ====== */
 /*   ====== NEED TO REFERENCE AJAX CALLS ======== */
@@ -424,5 +435,3 @@ define([
   })
   */
 
-	return survey;
-});
