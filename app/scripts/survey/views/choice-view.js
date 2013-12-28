@@ -48,12 +48,15 @@ function( Backbone, Communicator, choiceTemp ){
 
   		selected: function(){
         var self = this;
+        var theme = self.model.get('theme');
+
         /* set answer to step model */
         this.model.step.attributes.answer = this.model.attributes.name;
+
         
         // CSS animation classes
         this.$el.find('.icon').addClass('checked');
-        this.$el.find('.icon-svg').addClass('checked').attr('src','images/icons/checkmark.svg');
+        this.$el.find('.icon-svg').addClass('checked').attr('src','themes/'+theme+'/images/icons/checkmark.svg');
         this.$el.siblings().find('.icon-wrapper').addClass('not-checked');
 
         window.setTimeout(function(){

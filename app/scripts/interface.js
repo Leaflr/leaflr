@@ -11,7 +11,7 @@ define(['backbone','communicator'], function( Backbone, Communicator ){
 				parentHeight = parent.height( parentHeight );
 
 			target.find('.icon').addClass('checked');
-        	target.find('.icon-svg').addClass('checked').attr('src','images/icons/checkmark.svg');
+        	target.find('.icon-svg').addClass('checked').attr('src','themes/leaflr/images/icons/checkmark.svg');
         	target.siblings().find('.icon').addClass('not-checked');
         	target.addClass('fade-out').siblings().addClass('fade-out');
 
