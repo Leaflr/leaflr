@@ -16,84 +16,22 @@ define([
     specificVehicleTemp ) {
     'use strict';
 
-    //  vehicleType       = new stepModel({ title: 'What type of vehicle do you have?' }),
-    //  fuelType          = new stepModel({ title: 'What type of fuel does your vehicle take?' }),
-    //  roadType          = new stepModel({ title: 'What type of road is your commute?' }),
-    //  distanceTraveled  = new stepModel({ title: 'How far do you commute?' }),
-    //  specificDistance  = new stepModel({ title: 'specific distance' }),
-    //  specificVehicle   = new stepModel({ title: 'Select your vehicle' }),
-    //  userLocation      = new stepModel({ title: 'What is your location?' }),
-    //  tripFrequency     = new stepModel({ title: 'How often will you ride your bike?' }),
-    //  foo               = new stepModel({ title: 'foo' }),
-
-    /* Pull in JSON survey
-     * =================== */
-    var survey = {} 
-    var loaded_survey = $.ajax({
-        dataType: 'json',
-        url: 'data/leaflr.json',
-        type: 'GET',
-        async: false,
-        complete: function(data, res, xhr) {
-            survey = build_survey(data);
-        }
-    });
-
-     
-    function build_survey(loaded_survey) {
-        var  compiled_survey = compileSurvey(
-            eval('('+loaded_survey.responseText+')')
-        );
-
-
-        // Do the compile
-        console.log('Compiling Survey');
-
-        /* Build Metrics array
-         * =================== */
-        var metricsArray = [];
-        $.each(compiled_survey.metrics, function(index, val){
-            val.theme = compiled_survey.theme;
-            metricsArray[index] = new metricModel(val, {parse: true});
-        });
-
-        /* Build Step Array
-         * ================ */
-        var stepsArray = [];
-        $.each(compiled_survey.steps, function(index, val) {
-            /* == Build Choice Array == */
-            var choiceArray = [];
-            $.each(val.choices, function(i, v){
-                v.theme = compiled_survey.theme;
-                choiceArray[i] = new choiceModel(v, {parse: true});
-            });
-            stepsArray[index] = new stepModel({
-                title: val.title,
-                name: val.name,
-                theme: compiled_survey.theme,
-                choices: choiceArray
-            }); 
-        });
-
-        /* Build Survey
-         * ============ */
-        var survey = new surveyModel({
-            name: compiled_survey.name,
-            theme: compiled_survey.theme,
-            category: compiled_survey.category,
-            resultTitle: compiled_survey.resultTitle,
-            metrics: metricsArray,
-            steps: stepsArray
-        });
-
-
-        /* Compile JSON Survey
-         * =================== */
-        function compileSurvey(obj) {
+    var surveyCompiler = {
+        /* build() - Returns compiled survey
+         * ================================= */
+        build: function(obj) {
+            var ret = this.compile(obj);
+            return this.buildModel(ret);    
+        },
+        /* compile() - Recursive iteration through JSON.
+         *     Needed to eval event code
+         * ============================================ */
+        compile: function(obj) {
+            console.log('VAR: this', this);
             for(var k in obj) {
                 var v = obj[k];
                 if(typeof obj[k] == "object" && obj[k] !== null) {
-                    compileSurvey(obj[k]); // Recurse until match
+                    this.compile(obj[k]); // Recurse until match
                 } else {
                     if(k.match(/^_/)) {   // Match the underscore
                         obj[k.replace(/_/g, '')] = eval('('+v+')');
@@ -102,10 +40,63 @@ define([
                 }
             }   
             return obj;
+        }, 
+        buildModel: function(obj) {
+            /* Build Metrics array
+             * =================== */
+            var metricsArray = [];
+            $.each(obj.metrics, function(index, val){
+                val.theme = obj.theme;
+                metricsArray[index] = new metricModel(val, {parse: true});
+            });
+
+            /* Build Step Array
+             * ================ */
+            var stepsArray = [];
+            $.each(obj.steps, function(index, val) {
+                /* == Build Choice Array == */
+                var choiceArray = [];
+                $.each(val.choices, function(i, v){
+                    v.theme = obj.theme;
+                    choiceArray[i] = new choiceModel(v, {parse: true});
+                });
+                stepsArray[index] = new stepModel({
+                    title: val.title,
+                    name: val.name,
+                    theme: obj.theme,
+                    choices: choiceArray
+                }); 
+            });
+
+            /* Build Survey
+             * ============ */
+            var survey = new surveyModel({
+                name: obj.name,
+                theme: obj.theme,
+                category: obj.category,
+                resultTitle: obj.resultTitle,
+                metrics: metricsArray,
+                steps: stepsArray
+            });
+            return survey;
         }
-        console.log('SURVEY LOADED',survey);
-        return survey;
     }
+
+    var survey = {} 
+
+    /* Load Survey from JSON
+     * ===================== */
+    var loaded_survey = $.ajax({
+        dataType: 'json',
+        url: 'data/leaflr.json',
+        type: 'GET',
+        async: false,
+        // complete callback to fire after everything is loaded.
+        complete: function(data, res, jqXHR) {
+            data = eval('('+data.responseText+')');
+            survey = surveyCompiler.build(data);
+        }
+    });
     return survey;
 
 });
