@@ -17,6 +17,10 @@ define([
     'use strict';
 
     var surveyCompiler = {
+        debugOn: false,
+        debug: function(msg) {
+            (this.debugOn == true) ? console.log(msg):'';    
+        },
         /* build() - Returns compiled survey
          * ================================= */
         build: function(obj) {
@@ -27,7 +31,6 @@ define([
          *     Needed to eval event code
          * ============================================ */
         compile: function(obj) {
-            console.log('VAR: this', this);
             for(var k in obj) {
                 var v = obj[k];
                 if(typeof obj[k] == "object" && obj[k] !== null) {
@@ -42,11 +45,13 @@ define([
             return obj;
         }, 
         buildModel: function(obj) {
+            var self = this;
             /* Build Metrics array
              * =================== */
             var metricsArray = [];
             $.each(obj.metrics, function(index, val){
                 val.theme = obj.theme;
+                self.debug('Build Metric Model');
                 metricsArray[index] = new metricModel(val, {parse: true});
             });
 
@@ -58,8 +63,10 @@ define([
                 var choiceArray = [];
                 $.each(val.choices, function(i, v){
                     v.theme = obj.theme;
+                    self.debug('--Building Choice Model: ');
                     choiceArray[i] = new choiceModel(v, {parse: true});
                 });
+                self.debug('Building Step Model');
                 stepsArray[index] = new stepModel({
                     title: val.title,
                     name: val.name,
@@ -82,7 +89,7 @@ define([
         }
     }
 
-    var survey = {} 
+    var survey = {};
 
     /* Load Survey from JSON
      * ===================== */
@@ -93,6 +100,7 @@ define([
         async: false,
         // complete callback to fire after everything is loaded.
         complete: function(data, res, jqXHR) {
+            console.log('Retrieved Data from JSON');
             data = eval('('+data.responseText+')');
             survey = surveyCompiler.build(data);
         }

@@ -89,6 +89,12 @@ module.exports = function (grunt) {
                     script: 'server/app.js'
                 }
             },
+            lamp: {
+                options: {
+                    script: 'server/app.js',    
+                    background: true
+                }   
+            },
             prod: {
                 options: {
                     script: 'server/app.js'
@@ -111,7 +117,8 @@ module.exports = function (grunt) {
 
         clean: {
             dist: ['.tmp', '<%= yeoman.dist %>/*'],
-            server: '.tmp'
+            server: '.tmp',
+            lamp: 'app/styles/*.css'
         },
 
         // linting
@@ -141,6 +148,11 @@ module.exports = function (grunt) {
                 relativeAssets: true
             },
             dist: {},
+            lamp: {
+                options: {
+                    cssDir: '<%= yeoman.app %>/styles'    
+                }   
+            },
             server: {
                 options: {
                     debugInfo: true
@@ -302,6 +314,12 @@ module.exports = function (grunt) {
             'watch'
         ]);
     });
+
+    grunt.registerTask('lamp', [
+        'clean:lamp',
+        'compass:lamp',
+        'express:lamp',
+    ]);
 
     // todo fix these
     grunt.registerTask('test', [

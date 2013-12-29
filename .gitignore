@@ -5,3 +5,4 @@ dist
 app/components
 app/bower_components
 .tmp/
+app/styles/*css
