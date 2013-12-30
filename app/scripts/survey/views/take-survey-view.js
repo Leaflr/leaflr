@@ -56,7 +56,7 @@ function( Backbone, Communicator, metricSlidersView, stepsNavigatorView, stepsVi
 
     	onRender: function(){
     		var metrics = this.model.get('metrics'),
-                steps = this.model.get('steps');
+                steps   = this.model.get('steps');
 			
 			// initialize metric sliders
     		this.metricSliders.show( new metricSlidersView({ collection: metrics }) );

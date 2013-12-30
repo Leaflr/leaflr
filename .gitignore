@@ -3,5 +3,7 @@ temp
 dist
 .sass-cache
 app/components
+app/bower_components
 .tmp/
 .DS_Store
+app/styles/*css
