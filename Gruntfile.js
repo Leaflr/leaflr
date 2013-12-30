@@ -30,7 +30,10 @@ module.exports = function (grunt) {
         watch: {
             
             compass: {
-                files: ['<%= yeoman.app %>/styles/{,**/}*.scss'],
+                files: [
+                    '<%= yeoman.app %>/styles/{,**/}*.scss',
+                    '<%= yeoman.app %>/themes/{,**/}*.scss'
+                ],
                 tasks: ['compass']
             },
             

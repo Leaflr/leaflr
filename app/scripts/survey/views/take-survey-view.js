@@ -31,10 +31,6 @@ function( Backbone, Communicator, metricSlidersView, stepsNavigatorView, stepsVi
 	return Backbone.Marionette.Layout.extend({
   		template: takeSurveyTemp,
 
-  		events: {
-  			
-  		},
-
     	regions: {
     	  metricSliders: "#metric-sliders",
           stepNavigator: '#step-navigator',
@@ -46,11 +42,8 @@ function( Backbone, Communicator, metricSlidersView, stepsNavigatorView, stepsVi
 
             // event is fired when a choice is clicked
     		Communicator.events.on('nextStep', function( stepName ){
-    			if ( stepName == 'end' ){
-                    self.endSurvey(); 
-                } else {
-                    self.nextStep( stepName );
-                }
+    			if ( stepName == 'end' ) self.endSurvey(); 
+                else self.nextStep( stepName );
     		});
     	},
 
@@ -62,9 +55,6 @@ function( Backbone, Communicator, metricSlidersView, stepsNavigatorView, stepsVi
     		this.metricSliders.show( new metricSlidersView({ collection: metrics }) );
             this.stepNavigator.show( new stepsNavigatorView({ collection: steps }) );
             this.surveySteps.show( new stepsView({ collection: steps }) );
-
-    		// compile first step
-    		// this.compileStep();
     	},
 
         nextStep: function( stepName ){
@@ -76,8 +66,7 @@ function( Backbone, Communicator, metricSlidersView, stepsNavigatorView, stepsVi
             nextStepModel.set('active', true);
                     
             nextStepView = this.surveySteps.currentView.children.findByModel( nextStepModel );
-            nextStepView.activateStep();
-                    
+            nextStepView.activateStep();        
         },
 
         endSurvey: function(){
@@ -130,29 +119,6 @@ function( Backbone, Communicator, metricSlidersView, stepsNavigatorView, stepsVi
               }
             });
         },
-
-    	compileStep: function( step ){
-    		var steps = this.model.get('steps').models,
-    			step,
-                view;
-                
-            // if first step in survey, show first set of choices
-        	if ( !step ) step = steps[0].get('choices');
-            // if custom step
-            else if ( step.get('template') ) step = step;
-            // else show the next step
-        	else step = step.get('choices');
-        	
-        	this.currentStep = step;
-        	
-            // sets view depending on type of step
-            if ( step && step.get('template') )
-            view = new customStepView({ model: step, template: step.get('template') });
-            else
-            view = new choicesView({ collection: step });
-    		
-            this.surveyStep.show( view );
-    	}
 
 	});
 });
