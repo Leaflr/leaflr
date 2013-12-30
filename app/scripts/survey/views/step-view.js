@@ -10,20 +10,14 @@ function( Backbone, Communicator, choicesView, stepTemp ){
   		template: stepTemp,
   		className: 'step',
 
-      events: {
-        'click .choice':'removeAnimationClass'
-      },
-
       initialize: function(){
-        Communicator.events.on('nextStep', this.removeAnimationClass, this);
-
         // triggered from step slider
         this.model.on('sliderSelected', this.sliderSelected, this);
       },
 
   		onRender: function(){
   			var choices = this.model.get('choices'),
-  				view = new choicesView({ collection: choices });
+  				  view = new choicesView({ collection: choices });
 
   			view.render();
 
@@ -33,22 +27,17 @@ function( Backbone, Communicator, choicesView, stepTemp ){
       activateStep: function(){
         var self = this;
 
-        this.$el.addClass('slide-in');
-        console.log(this.$el)
+        this.$el.attr('class', 'step slide-in');
+
         setTimeout(function(){
-          self.$el.addClass('reset-animation').removeClass('slide-in');
+          self.$el.attr('class', 'step reset-animation')
         }, 300);
       },
 
       sliderSelected: function(){
         this.$el.attr('class','step reset-animation slide-in-fast').nextAll().addClass('slide-out-fast');
         this.$el.prevAll().addClass('slide-out-fast');
-      },
-
-      // removeAnimationClass: function(){
-      //   this.$el;
-      //   console.log('rempove')
-      // }
+      }
 
 	});
 });

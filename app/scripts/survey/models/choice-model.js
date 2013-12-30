@@ -82,6 +82,8 @@ define(['backbone','communicator','backbone.associations'], function( Backbone, 
 			this.survey.history.push( this.history );
 			else 
 			historyEntry.values = this.history.values;
+
+			this.step.set('history', this.history);
 			
 			return this;
 		},
