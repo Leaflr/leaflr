@@ -71,6 +71,8 @@ function( Backbone, Communicator, metricSlidersView, stepsNavigatorView, stepsVi
 
         endSurvey: function(){
             
+            this.model.set('completed', true);
+            
             this.$el.find('#step-navigator .results').css('display','inline-block').addClass('active-step').siblings().removeClass('active-step');
 
             Communicator.events.trigger('endSurvey', this.model);
@@ -102,7 +104,7 @@ function( Backbone, Communicator, metricSlidersView, stepsNavigatorView, stepsVi
             console.log('cal', calories);
             console.log('boi', boi);
 
-            this.metricSliders.closeAnimate();
+            // this.metricSliders.closeAnimate();
 
             var surveyCompleted = new surveyCompleteView({ collection: this.model.get('metrics') });
             surveyCompleted.render();

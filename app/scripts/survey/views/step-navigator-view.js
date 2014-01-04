@@ -25,24 +25,28 @@ function( Backbone, Communicator, stepNavigatorTemp ) {
             this.model.on('sliderSelected', this.sliderSelected, this)
   		},
 
-  		activateStep: function(e){
-            // compile next step if it has been completed or is next available step      
-            if ( this.model.has('completed') || this.model.get('viewed') == true ) {
-  		        Communicator.events.trigger('nextStep', this.model.get('name') );
-                    
-                if ( this.model.has('history') )
-                    this.highlightValues();
-                else
-                    this.reactivateSliders();
-  			} 
-  		},
+  		// activateStep: function(e){
+    //      // compile next step if it has been completed or is next available step      
+  		// 	if ( this.model.has('completed') || this.model.get('viewed') == true ){
+  		// 		Communicator.events.trigger('nextStep', this.model.get('name') );
+  				
+    //       if ( this.model.has('history') )
+  		// 		this.highlightValues();
+  		// 		else
+  		// 		this.reactivateSliders();
+  		// 	} 
+  		// },
 
-        sliderSelected: function(){
-            if ( this.model.has('history') )
-                this.highlightValues();
-            else
-                this.reactivateSliders();
-        },
+      sliderSelected: function(){
+          if ( this.model.has('history') ){
+          Communicator.events.trigger('nextStep', this.model.get('name') );
+          
+          this.highlightValues();
+          
+        } else {
+          this.reactivateSliders();
+        }
+      },
 
   		isActive: function(){
         // checks for currently active step and highlights step indicator
@@ -69,7 +73,7 @@ function( Backbone, Communicator, stepNavigatorTemp ) {
   				values = {},
   				index,
   				metricSliders = $('#metric-sliders');
-  			
+          
   			// get index of current step history entry in survey history
   			for (var i = 0; i < history.length; i++){
 	         if ( history[i].step.cid == stepHistory.step.cid )

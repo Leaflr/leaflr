@@ -48,7 +48,7 @@ function( Backbone, Communicator ) {
 		saveMetric: function( metricValues ){
             metricValues = this.attributes.metricVals;
 			var historyEntry = this.getHistoryEntry();
-			console.log('saveMetric',this)
+			
 			// reset values
 			this.history.values = []
 			
@@ -77,6 +77,7 @@ function( Backbone, Communicator ) {
 							oldValue = existingEntry.value;
 						}
 					}
+					
 					model.subtract( oldValue ).add( value );
 				}
 
@@ -88,6 +89,8 @@ function( Backbone, Communicator ) {
 			this.survey.history.push( this.history );
 			else 
 			historyEntry.values = this.history.values;
+
+			// console.table( this.history.values, metricValues )
 
 			this.step.set('history', this.history);
 			

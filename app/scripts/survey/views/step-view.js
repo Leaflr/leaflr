@@ -29,9 +29,20 @@ function( Backbone, Communicator, choicesView, stepTemp ){
 
         this.$el.attr('class', 'step slide-in');
 
+        if ( !this.model.has('history') ) this.reactivateSliders();
+
         setTimeout(function(){
           self.$el.attr('class', 'step reset-animation')
         }, 300);
+      },
+
+      reactivateSliders: function(){
+        var sliders = $('#metric-sliders'),
+          currentValues = sliders.find('.value'),
+          historyValues = sliders.find('.past-value');
+
+        currentValues.removeClass('inactive-slider');
+        historyValues.css('display','none');
       },
 
       sliderSelected: function(){

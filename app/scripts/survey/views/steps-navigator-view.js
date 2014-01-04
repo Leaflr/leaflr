@@ -15,7 +15,8 @@ function( Backbone, Communicator, stepNavigatorView, stepsNavigatorTemp ){
       itemViewContainer: '.step-dots',
 
       events : {
-        'click .results':'showResults'
+        'click .results' : 'showResults',
+        'click .step-dots div' : 'selectStep'
       },
 
       ui: {
@@ -37,36 +38,54 @@ function( Backbone, Communicator, stepNavigatorView, stepsNavigatorTemp ){
         this.initStepSlider(); 
       },
 
+      selectStep: function(e){
+        var target = $(e.target),
+            index = target.index() + 1;
+
+        this.selectIndicator( index, target );
+        this.ui.slider.slider('value', index);
+
+        e.stopPropagation();
+      },
+
       resizeSlider: function(){
         var stepsWidth = this.ui.indicators.width(),
-            activeStep = this.ui.indicators.find('.active-step').index() + 1,
+            activeStep = this.ui.indicators.find('.active-step').index(),
             steps = this.ui.indicators.children().filter(':visible').length;
 
-        this.ui.slider.css({'width': stepsWidth - 24, 'left':'-11px' });
+        this.ui.slider.css({'width': stepsWidth });
         
         this.ui.slider.slider('option', {
-          max: steps,
-          value: activeStep
+          max: steps + 1,
+          value: activeStep + 1
         }); 
+      },
+
+      selectIndicator: function( pos, dom ){
+          var cid = dom.data('model');
+
+          dom.addClass('active-step').siblings().removeClass('active-step');
+          this.collection.get(cid).trigger('sliderSelected');
       },
 
       initStepSlider: function(){
         var self = this,
             indicators = this.ui.indicators,
-            steps;
+            steps,
+            max;
 
         this.ui.slider.slider({
           min: 1,
           start: function(){
             steps = $('#survey-steps .step');
+            max = self.ui.slider.slider('option','max');
           },
           slide: function( event, ui ){
-            var currentIndicator = indicators.find(':eq(' + (ui.value - 1) + ')'),
-                cid = currentIndicator.data('model');
+            if ( ui.value == max ) ui.value = max - 1;
             
-            currentIndicator.addClass('active-step').siblings().removeClass('active-step');
+            var currentIndicator = indicators.find(':eq(' + (ui.value - 1) + ')');
 
-            self.collection.get(cid).trigger('sliderSelected');
+            self.selectIndicator( ui.value, currentIndicator );
            
           }
         });

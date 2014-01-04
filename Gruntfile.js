@@ -31,8 +31,8 @@ module.exports = function (grunt) {
             
             compass: {
                 files: [
-                    '<%= yeoman.app %>/styles/{,**/}*.scss',
-                    '<%= yeoman.app %>/themes/{,**/}*.scss'
+                    // '<%= yeoman.app %>/styles/{,**/}*.scss',
+                    '<%= yeoman.app %>/themes/*/stylesheets/{,**/}*.scss'
                 ],
                 tasks: ['compass']
             },
@@ -41,7 +41,7 @@ module.exports = function (grunt) {
                 files: [
                     
                     '<%= yeoman.app %>/*.html',
-                    '{.tmp,<%= yeoman.app %>}/styles/*/*.css',
+                    '<%= yeoman.app %>/styles/{,**/}*.css',
                     '{.tmp,<%= yeoman.app %>}/scripts/{,**/}*.js',
                     '{.tmp,<%= yeoman.app %>}/templates/{,**/}*.hbs',
                     '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp}',
@@ -143,7 +143,7 @@ module.exports = function (grunt) {
         compass: {
             options: {
                 sassDir: '<%= yeoman.app %>/styles',
-                cssDir: '.tmp/styles',
+                cssDir: '<%= yeoman.app %>/styles',
                 imagesDir: '<%= yeoman.app %>/images',
                 javascriptsDir: '<%= yeoman.app %>/scripts',
                 fontsDir: '<%= yeoman.app %>/styles/fonts',
@@ -151,16 +151,16 @@ module.exports = function (grunt) {
                 relativeAssets: true
             },
             dist: {},
-            lamp: {
-                options: {
-                    cssDir: '<%= yeoman.app %>/styles'    
-                }   
-            },
-            server: {
-                options: {
-                    debugInfo: true
-                }
-            }
+            // lamp: {
+            //     options: {
+            //         cssDir: '<%= yeoman.app %>/styles'    
+            //     }   
+            // },
+            // server: {
+            //     options: {
+            //         debugInfo: true
+            //     }
+            // }
         },
         
 
@@ -310,29 +310,29 @@ module.exports = function (grunt) {
         grunt.task.run([
             'clean:server',
             'compass:server',
-            'connect:testserver',
+            // 'connect:testserver',
             'express:dev',
-            'exec',
+            // 'exec',
             'open',
             'watch'
         ]);
     });
 
-    grunt.registerTask('lamp', [
-        'clean:lamp',
-        'compass:lamp',
-        'express:lamp',
-    ]);
+    // grunt.registerTask('lamp', [
+    //     'clean:lamp',
+    //     'compass:lamp',
+    //     'express:lamp',
+    // ]);
 
-    // todo fix these
-    grunt.registerTask('test', [
-        'clean:server',
-        'createDefaultTemplate',
-        'handlebars',
-        'compass',
-        'connect:testserver',
-        'exec:mocha'
-    ]);
+    // // todo fix these
+    // grunt.registerTask('test', [
+    //     'clean:server',
+    //     'createDefaultTemplate',
+    //     'handlebars',
+    //     'compass',
+    //     'connect:testserver',
+    //     'exec:mocha'
+    // ]);
 
     grunt.registerTask('build', [
         'createDefaultTemplate',
