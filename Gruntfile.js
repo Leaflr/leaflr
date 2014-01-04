@@ -156,11 +156,11 @@ module.exports = function (grunt) {
             //         cssDir: '<%= yeoman.app %>/styles'    
             //     }   
             // },
-            // server: {
-            //     options: {
-            //         debugInfo: true
-            //     }
-            // }
+             server: {
+                 options: {
+                     debugInfo: true
+                 }
+            }
         },
         
 
@@ -313,7 +313,7 @@ module.exports = function (grunt) {
             // 'connect:testserver',
             'express:dev',
             // 'exec',
-            'open',
+            // 'open',
             'watch'
         ]);
     });
