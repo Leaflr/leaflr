@@ -41,6 +41,7 @@ define(['backbone','communicator','backbone.associations'], function( Backbone, 
 		},
 
 		saveMetric: function( metricValues ){
+            metricValues = this.attributes.metricVals;
 			var historyEntry = this.getHistoryEntry();
 			console.log('saveMetric',this)
 			// reset values
