@@ -1,0 +1,39 @@
+{
+  "name": "Welcome to Chlorophyll",
+  "category": "default",
+  "completed": true,
+  "resultTitle": "Setup Chlorophyll",
+  "theme": "default",
+  "metrics": [
+    {
+      "name": "progress",
+      "type": "plus",
+      "measurement": "To Complete",
+      "showSlider": true
+    },
+  ],
+  "steps": [
+    {
+      "title": "Do you have any javascript experience?",
+      "name": "js exp",
+      "choices": [
+        {
+          "name": "yes",
+          "iconClass": "sedan",
+          "icon": "cir.svg",
+          "nextStep": "fuel type",
+          "_onOpen": "function(choice) {console.log('ONOPEN')}",
+          "_onSelect": "function(choice) {console.log('ONSELECT')}"
+        },
+        {
+          "name": "no",
+          "iconClass": "suv",
+          "icon": "hex.svg",
+          "nextStep": "fuel type",
+          "_onSelect": "function(choice) {choice.saveMetric({ 'gas': 20, 'money': 10, 'emissions': 5 });}",
+        },
+      ]
+    },
+
+  ]
+}
