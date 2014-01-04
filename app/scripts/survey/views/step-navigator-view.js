@@ -1,27 +1,28 @@
 define([
 	'backbone',
 	'communicator',
-	'hbs!tmpl/survey/step-navigator'],
-function( Backbone, Communicator, stepNavigatorTemp ){
+	'hbs!tmpl/survey/step-navigator'
+],
+function( Backbone, Communicator, stepNavigatorTemp ) {
 	'use strict';
 
 	return Backbone.Marionette.ItemView.extend({
-  		template: stepNavigatorTemp,
-      className: 'step-dot',
+        template: stepNavigatorTemp,
+        className: 'step-dot',
 
   		events: {
   			'click':'activateStep'
   		},
 
-      attributes: function(){
-        return {
-          'data-model': this.model.cid
-        }
-      },
+        attributes: function(){
+            return {
+                'data-model': this.model.cid
+            }
+        },
   		
   		initialize: function(){
-  			this.model.on('change:active', this.isActive, this);
-        this.model.on('sliderSelected', this.sliderSelected, this)
+            this.model.on('change:active', this.isActive, this);
+            this.model.on('sliderSelected', this.sliderSelected, this)
   		},
 
   		// activateStep: function(e){
@@ -48,8 +49,7 @@ function( Backbone, Communicator, stepNavigatorTemp ){
       },
 
   		isActive: function(){
-
-         // checks for currently active step and highlights step indicator
+        // checks for currently active step and highlights step indicator
   			if ( this.model.get('active') == true ){
             // reveals first 2 steps when second choice is active
             if ( this.$el.index() == 1 )

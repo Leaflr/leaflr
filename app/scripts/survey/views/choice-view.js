@@ -1,19 +1,25 @@
 define([
 	'backbone',
 	'communicator',
-	'hbs!tmpl/survey/choice'],
-function( Backbone, Communicator, choiceTemp ){
+	'hbs!tmpl/survey/choice'
+],
+function( Backbone, Communicator, choiceTemp ) {
 	'use strict';
 
 	return Backbone.Marionette.ItemView.extend({
-  		template: choiceTemp,
-      className: 'choice',
+        template: choiceTemp,
+        className: 'choice',
 
   		events: {
   			'click' : 'selected'
   		},
+        onBeforeRender: function() {
+            if(this.model.get('onOpen'))    
+                this.model.attributes.onOpen( this.model );
+        },
 
   		selected: function(){
+
         var self = this,
             theme = self.model.get('theme'),
             siblings = this.$el.siblings(),
@@ -21,8 +27,9 @@ function( Backbone, Communicator, choiceTemp ){
             icon = this.$el.find('.icon'),
             iconSVG = this.$el.find('.icon-svg');
 
-        /* set answer to step model */
-        this.model.step.attributes.answer = this.model.attributes.name;
+
+            /* set answer to step model */
+            this.model.step.attributes.answer = this.model.attributes.name;
 
         if ( this.model.step.has('completed') ){
           iconWrapper.removeClass('not-checked');
@@ -50,8 +57,8 @@ function( Backbone, Communicator, choiceTemp ){
 
         }, 500);
 
-  			if (this.model.get('onSelect'))
-  			this.model.attributes.onSelect( this.model );
+            if (this.model.get('onSelect'))
+            this.model.attributes.onSelect( this.model );
 
   		}
 	});

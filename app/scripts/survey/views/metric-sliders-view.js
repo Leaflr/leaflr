@@ -2,7 +2,8 @@ define([
 	'backbone',
 	'communicator',
 	'survey/views/metric-slider-view',
-	'hbs!tmpl/survey/metric-sliders'],
+	'hbs!tmpl/survey/metric-sliders'
+],
 function( Backbone, Communicator, metricSliderView, metricSlidersTemp ){
 	'use strict';
 

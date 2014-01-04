@@ -1,4 +1,10 @@
-define(['backbone','communicator','survey/models/choice-model','backbone.associations'], function( Backbone, Communicator, choiceModel ){
+define([
+    'backbone',
+    'communicator',
+    'survey/models/choice-model',
+    'backbone.associations'
+],
+function( Backbone, Communicator, choiceModel ) {
 	'use strict';
 
 	// static option model has a single return value
@@ -8,7 +14,6 @@ define(['backbone','communicator','survey/models/choice-model','backbone.associa
 		idAttribute: '_id',
 		defaults: {
 			title: 'step 1',
-			
 		},
 
 		initialize: function(){
