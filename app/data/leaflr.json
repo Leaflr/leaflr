@@ -1,5 +1,5 @@
 {
-  "name": "Bike to Work!",
+  "name": "Bike to Work",
   "category": "transit",
   "completed": true,
   "resultTitle": "By biking to work you saved",
@@ -46,36 +46,24 @@
           "iconClass": "sedan",
           "icon": "sedan.svg",
           "nextStep": "fuel type",
-<<<<<<< HEAD
-          "_onSelect": "function(choice) {choice.saveMetric({ 'gas': 21, 'money': 10, 'emissions': 5 });}",
-=======
           "metricVals": { 'gas': 20, 'money': 10, 'emissions': 5 },
           "_onSelect": "function(choice) {console.log('choice',choice); choice.saveMetric();}",
->>>>>>> 09f24306dab6083206c7d57679d6c05e7dbefa65
         },
         {
           "name": "suv",
           "iconClass": "suv",
           "icon": "suv.svg",
           "nextStep": "fuel type",
-<<<<<<< HEAD
-          "_onSelect": "function(choice) {choice.saveMetric({ 'gas': 22, 'money': 10, 'emissions': 5 });}",
-=======
           "metricVals": { 'gas': 20, 'money': 10, 'emissions': 5 },
           "_onSelect": "function(choice) {choice.saveMetric();}",
->>>>>>> 09f24306dab6083206c7d57679d6c05e7dbefa65
         },
         {
           "name": "truck",
           "iconClass": "truck",
           "icon": "truck.svg",
           "nextStep": "fuel type",
-<<<<<<< HEAD
-          "_onSelect": "function(choice) {choice.saveMetric({ 'gas': 23, 'money': 10, 'emissions': 5 });}",
-=======
           "metricVals": { 'gas': 20, 'money': 10, 'emissions': 5 },
           "_onSelect": "function(choice) {choice.saveMetric();}",
->>>>>>> 09f24306dab6083206c7d57679d6c05e7dbefa65
         },
         {
           "name": "specific",
@@ -94,36 +82,24 @@
           "iconClass": "gas",
           "icon": "gas.svg",
           "nextStep": "user location",
-<<<<<<< HEAD
-          "_onSelect": "function(choice) {choice.saveMetric({ 'gas': 21, 'money': 10, 'emissions': 5 });}",
-=======
           "metricVals": { 'gas': 20, 'money': 10, 'emissions': 5 },
           "_onSelect": "function(choice) {choice.saveMetric();}",
->>>>>>> 09f24306dab6083206c7d57679d6c05e7dbefa65
         },
         {
           "name": "electric",
           "iconClass": "electric",
           "icon": "electric.svg",
           "nextStep": "user location",
-<<<<<<< HEAD
-          "_onSelect": "function(choice) {choice.saveMetric({ 'gas': 22, 'money': 10, 'emissions': 5 });}",
-=======
           "metricVals": { 'gas': 20, 'money': 10, 'emissions': 5 },
           "_onSelect": "function(choice) {choice.saveMetric();}",
->>>>>>> 09f24306dab6083206c7d57679d6c05e7dbefa65
         },
         {
           "name": "diesel",
           "iconClass": "diesel",
           "icon": "diesel.svg",
           "nextStep": "user location",
-<<<<<<< HEAD
-          "_onSelect": "function(choice) {choice.saveMetric({ 'gas': 23, 'money': 10, 'emissions': 5 });}",
-=======
           "metricVals": { 'gas': 20, 'money': 10, 'emissions': 5 },
           "_onSelect": "function(choice) {choice.saveMetric();}",
->>>>>>> 09f24306dab6083206c7d57679d6c05e7dbefa65
         },
         {
           "name": "hybrid",
