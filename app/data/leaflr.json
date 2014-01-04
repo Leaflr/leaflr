@@ -47,7 +47,7 @@
           "icon": "sedan.svg",
           "nextStep": "fuel type",
           "metricVals": { 'gas': 20, 'money': 10, 'emissions': 5 },
-          "_onSelect": "function(choice) {choice.saveMetric();}",
+          "_onSelect": "function(choice) {console.log('choice',choice); choice.saveMetric();}",
         },
         {
           "name": "suv",
