@@ -11,7 +11,7 @@ define([
 	'interface'
 ],
 
-function( Backbone, Communicator, surveyModel, stepModel, choiceModel, metricModel, takeSurvey, survey, surveyRouter ) {
+function( Backbone, Communicator, surveyModel, stepModel, choiceModel, metricModel, takeSurvey, Survey, surveyRouter ) {
     'use strict';
 
 	var App = new Backbone.Marionette.Application(),
@@ -23,7 +23,7 @@ function( Backbone, Communicator, surveyModel, stepModel, choiceModel, metricMod
 	});
 	
 	App.addInitializer(function(){
-	    App.takeSurvey.show( new takeSurvey({ model: survey }) );
+	    App.takeSurvey.show( new takeSurvey({ model: Survey('survey-choice') }) );
 	});
 
 	return App;

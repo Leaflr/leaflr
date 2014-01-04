@@ -6,7 +6,7 @@ define([
     'survey/models/choice-model',
     'survey/models/metric-model',
     'hbs!tmpl/survey/custom-step-vehicle',
-], function(
+], function (
     Backbone,
     Communicator,
     surveyModel,
@@ -89,23 +89,27 @@ define([
         }
     }
 
-    var survey = {};
+    var load = function(template) {
+        var survey = {};
+        /* Load Survey from JSON
+         * ===================== */
+        var loaded_survey = $.ajax({
+            dataType: 'json',
+            url: 'data/'+template+'.json',
+            type: 'GET',
+            async: false,
+            // complete callback to fire after everything is loaded.
+            complete: function(data, res, jqXHR) {
+                console.log('Retrieved Data from JSON');
+                data = eval('('+data.responseText+')');
+                survey = surveyCompiler.build(data);
+            }
+        });
 
-    /* Load Survey from JSON
-     * ===================== */
-    var loaded_survey = $.ajax({
-        dataType: 'json',
-        url: 'data/leaflr.json',
-        type: 'GET',
-        async: false,
-        // complete callback to fire after everything is loaded.
-        complete: function(data, res, jqXHR) {
-            console.log('Retrieved Data from JSON');
-            data = eval('('+data.responseText+')');
-            survey = surveyCompiler.build(data);
-        }
-    });
-    return survey;
+        return survey;
+    }
+    return load;
+    //return survey;
 
 });
 
