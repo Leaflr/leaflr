@@ -1,6 +1,7 @@
 define([
 	'backbone',
-	'communicator'],
+	'communicator'
+],
 function( Backbone, Communicator ){
 	'use strict';
 
@@ -14,9 +15,6 @@ function( Backbone, Communicator ){
         survey = survey.replace(/-/g,' ');
         step = step.replace(/-/g,' ');
   			
-        
   		}
-
 	});
-
 });

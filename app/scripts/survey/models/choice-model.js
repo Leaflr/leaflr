@@ -1,4 +1,9 @@
-define(['backbone','communicator','backbone.associations'], function( Backbone, Communicator ){
+define([
+    'backbone',
+    'communicator',
+    'backbone.associations'
+],
+function( Backbone, Communicator ) {
 	'use strict';
 
 	// static option model has a single return value
@@ -96,9 +101,9 @@ define(['backbone','communicator','backbone.associations'], function( Backbone, 
 
 			// if history entry exists
 			if ( !historyEntry )
-			this.survey.history.push( this.history );
+			    this.survey.history.push( this.history );
 			else
-			historyEntry.answer = answer;
+			    historyEntry.answer = answer;
 
 			return this;
 		},
