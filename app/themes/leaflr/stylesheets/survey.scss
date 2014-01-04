@@ -7,34 +7,35 @@
 		text-align: center;
 		padding: 10px 0;
 		height: 46px;
-
+		
 		.step-dot {
-			height: 20px;
-			width: 20px;
+			position: relative;
+			z-index: 1;
+			height: 30px;
+			width: 30px;
 			border-radius: 50%;
 			display: inline-block;
 			margin: 0 4px;
-			background-color: #DDE2E8;
-			font-size: em(13);
+			font-size: em(12);
 			font-weight: 700;
-			padding-top: 2px;
-			color: rgba(0,0,0,.6);
+			padding-top: 6px;
+			color: rgba(0,0,0,.55);
 			text-align: center;
 			display: none;
+
+			&:hover {
+				cursor: pointer;
+			}
 		}
 		.active-step {
 			background-color: tomato;
 			color: white;
+			pointer-events: none;
 			// font-weight: 400;
 		}
 		.results {
-			position: relative;
-			top: -6px;
-			width: auto;
-			padding: 2px 7px 0;
 			@include micro-text;
 			color: rgba(black,.6);
-			border-radius: 10px;
 		}
 		.results.active-step {
 			background-color: $money-color;
@@ -48,14 +49,20 @@
 	width: 100%;
 	margin: 0 auto;
 	position: relative;
-	top: -24px;
-	background-color: #ccc;
+	top: -26px;
+	background-color: darken($light, 8%);
+	border-radius: 15px;
+	z-index: 0;
+	// box-shadow: inset 1px 1px 5px rgba(0,0,0,.17);
+
 
 	.ui-slider-handle {
-		width: 24px;
-		height: 20px;
-		// outline: 1px solid green;
+		width: 30px;
+		height: 30px;
+		outline: none;
+		margin: -4px 0 0 4px;
 		position: absolute;
+		z-index: 10;
 	}
 }
 
@@ -166,17 +173,17 @@
 
 .chosen.icon-wrapper:after {
 	position: relative;
-	top: -53px;
+	top: -50px;
 	@include micro-text;
 	font-size: em(11);
 	font-weight: 600;
 	content: 'you chose';
-	color: rgba(white, .85);
+	color: rgba(white, .95);
 }
 .chosen .icon-svg {
-	top: 7px;
-	margin-left: -60px;
-	width: 80%;
+	top: 9px;
+	margin-left: -59px;
+	width: 120px;
 }
 
 
@@ -234,7 +241,7 @@
 
 @-webkit-keyframes notchecked {
     0%  {-webkit-transform: scale(1);}
-    100% { opacity: .55; -webkit-transform: scale(.75);}   
+    100% { opacity: .75; -webkit-transform: scale(.75);}   
 }
 
 /* METRIC INIDICATORS

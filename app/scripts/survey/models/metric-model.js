@@ -45,8 +45,8 @@ function( Backbone, Communicator ) {
 			newVal = oldVal - val;
 
 			if (newVal > 100) newVal = 100;
-			else if (newVal > 0) newVal = 0;
-
+			else if (newVal < 0) newVal = 0;
+			
 			this.set('value', newVal);
 			return this;
 		}

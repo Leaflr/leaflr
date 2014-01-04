@@ -42,7 +42,7 @@ define(['backbone','communicator','backbone.associations'], function( Backbone, 
 
 		saveMetric: function( metricValues ){
 			var historyEntry = this.getHistoryEntry();
-			console.log('saveMetric',this)
+			
 			// reset values
 			this.history.values = []
 			
@@ -71,6 +71,7 @@ define(['backbone','communicator','backbone.associations'], function( Backbone, 
 							oldValue = existingEntry.value;
 						}
 					}
+					
 					model.subtract( oldValue ).add( value );
 				}
 
@@ -82,6 +83,8 @@ define(['backbone','communicator','backbone.associations'], function( Backbone, 
 			this.survey.history.push( this.history );
 			else 
 			historyEntry.values = this.history.values;
+
+			// console.table( this.history.values, metricValues )
 
 			this.step.set('history', this.history);
 			
