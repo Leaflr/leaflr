@@ -14,6 +14,9 @@ require.config({
             ],
             exports: 'Backbone'
         },
+        'backbone.associations': {
+            deps: ['backbone']   
+        },
         bootstrap: {
             deps: ['jquery'],
             exports: 'jquery'
