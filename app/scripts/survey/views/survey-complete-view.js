@@ -5,6 +5,8 @@ define(['backbone','survey/views/survey-complete-single-view','hbs!tmpl/survey/s
 		template: surveyComplete,
 		itemView: surveyCompleteSingle,
 		itemViewContainer: '.survey-results',
-		className: 'results'
+		className: function(){
+			return 'results step'
+		}
 	});
 });

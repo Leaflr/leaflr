@@ -75,10 +75,10 @@ function( Backbone, Communicator, metricSlidersView, stepsNavigatorView, stepsVi
             
             this.$el.find('#step-navigator .results').css('display','inline-block').addClass('active-step').siblings().removeClass('active-step');
 
-            Communicator.events.trigger('endSurvey', this.model);
+            // Communicator.events.trigger('endSurvey', this.model);
 
             var results = this.model.results;
-
+            
             // Calculations
             var gallons = ((results.tripdistance * (results.hwyper / 100)) / results.carmpghwy) + ((results.tripdistance * ((100 - results.hwyper) / 100)) / results.carmpgcity);
             gallons = (gallons * (2 * results.freq));
@@ -105,7 +105,7 @@ function( Backbone, Communicator, metricSlidersView, stepsNavigatorView, stepsVi
             console.log('boi', boi);
 
             // this.metricSliders.closeAnimate();
-
+            this.surveySteps.$el.find('.results').remove();
             var surveyCompleted = new surveyCompleteView({ collection: this.model.get('metrics') });
             surveyCompleted.render();
             this.surveySteps.$el.append( surveyCompleted.el );

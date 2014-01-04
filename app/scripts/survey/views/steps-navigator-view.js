@@ -29,7 +29,10 @@ function( Backbone, Communicator, stepNavigatorView, stepsNavigatorTemp ){
       },
 
       showResults: function(){
-        Communicator.events.trigger('nextStep', 'end');
+        var cid = this.ui.indicators.find('.results').prev().data('model');
+        $('#survey-steps .results').show();
+        console.log(cid)
+        this.collection.get(cid).trigger('sliderSelected', true);
       },
       
       onRender: function(){
@@ -43,6 +46,7 @@ function( Backbone, Communicator, stepNavigatorView, stepsNavigatorTemp ){
             index = target.index() + 1;
 
         this.selectIndicator( index, target );
+
         this.ui.slider.slider('value', index);
 
         e.stopPropagation();
@@ -65,6 +69,8 @@ function( Backbone, Communicator, stepNavigatorView, stepsNavigatorTemp ){
           var cid = dom.data('model');
 
           dom.addClass('active-step').siblings().removeClass('active-step');
+
+          if ( !dom.hasClass('results') )
           this.collection.get(cid).trigger('sliderSelected');
       },
 
@@ -85,6 +91,11 @@ function( Backbone, Communicator, stepNavigatorView, stepsNavigatorTemp ){
             
             var currentIndicator = indicators.find(':eq(' + (ui.value - 1) + ')');
 
+            
+
+            if ( currentIndicator.hasClass('results') ){
+              self.showResults();
+            }
             self.selectIndicator( ui.value, currentIndicator );
            
           }

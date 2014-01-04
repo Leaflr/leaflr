@@ -31,9 +31,11 @@ function( Backbone, Communicator, choicesView, stepTemp ){
 
         if ( !this.model.has('history') ) this.reactivateSliders();
 
+        if ( !this.$el.is(':last-child') )
         setTimeout(function(){
           self.$el.attr('class', 'step reset-animation')
         }, 300);
+      
       },
 
       reactivateSliders: function(){
@@ -45,9 +47,15 @@ function( Backbone, Communicator, choicesView, stepTemp ){
         historyValues.css('display','none');
       },
 
-      sliderSelected: function(){
-        this.$el.attr('class','step reset-animation slide-in-fast').nextAll().addClass('slide-out-fast');
-        this.$el.prevAll().addClass('slide-out-fast');
+      sliderSelected: function( isLastStep ){
+        
+
+        if ( isLastStep == true ){
+          this.$el.attr('class','step reset-animation slide-out-fast');
+        } else {
+          this.$el.attr('class','step reset-animation slide-in-fast').nextAll().addClass('slide-out-fast');
+          this.$el.prevAll().addClass('slide-out-fast');
+        }
       }
 
 	});
