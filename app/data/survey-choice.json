@@ -8,87 +8,27 @@
   "stepNavOn": false,
   "steps": [
     {
-      "title": "How can you make an impact? Start by choosing ways you want to conserve.",
-      "name": "conserve-type",
+      "title": "Select your survey",
+      "name": "Survey Select",
       "choices": [
         {
-          "name": "transport",
+          "name": "Leaflr",
           "iconClass": "transport",
           "icon": "transport-color.svg",
-          "nextStep": "transport-type",
+          "nextStep": "chain:leaflr",
           "_onOpen": "function(choice) {console.log('ONOPEN')}",
           "_onSelect": "function(choice) {console.log('ONSELECT')}"
         },
         {
-          "name": "Utilities",
+          "name": "CAHPS",
           "iconClass": "utilities",
           "icon": "utilities.svg",
-          "nextStep": "utilities-type",
+          "nextStep": "chain:cahps",
           "_onOpen": "function(choice) {console.log('ONOPEN')}",
           "_onSelect": "function(choice) {console.log('ONSELECT')}"
         },
         {
-          "name": "Consumption",
-          "iconClass": "consumption",
-          "icon": "consumption.svg",
-          "nextStep": "consumption-type",
-          "_onOpen": "function(choice) {console.log('ONOPEN')}",
-          "_onSelect": "function(choice) {console.log('ONSELECT')}"
-        },
-      ]
-    },
-    {
-      "title": "What type of transportation?",
-      "name": "transport-type",
-      "choices": [
-        {
-          "name": "Bike",
-          "iconClass": "bike",
-          "icon": "bike.svg",
-          "nextStep": "bike-type",
-          "_onOpen": "function(choice) {console.log('ONOPEN')}",
-          "_onSelect": "function(choice) {console.log('ONSELECT')}"
-        },
-        {
-          "name": "Auto",
-          "iconClass": "auto",
-          "icon": "transport.svg",
-          "nextStep": "auto-type",
-          "_onOpen": "function(choice) {console.log('ONOPEN')}",
-          "_onSelect": "function(choice) {console.log('ONSELECT')}"
-        },
-        {
-          "name": "Transit",
-          "iconClass": "transit",
-          "icon": "transit.svg",
-          "nextStep": "transit-type",
-          "_onOpen": "function(choice) {console.log('ONOPEN')}",
-          "_onSelect": "function(choice) {console.log('ONSELECT')}"
-        },
-      ]
-    },
-    {
-      "title": "What type of Utility?",
-      "name": "utilities-type",
-      "choices": [
-        {
-          "name": "Gas",
-          "iconClass": "gas",
-          "icon": "sedan.svg",
-          "nextStep": "end",
-          "_onOpen": "function(choice) {console.log('ONOPEN')}",
-          "_onSelect": "function(choice) {console.log('ONSELECT')}"
-        },
-        {
-          "name": "Water",
-          "iconClass": "utilities",
-          "icon": "utilities.svg",
-          "nextStep": "end",
-          "_onOpen": "function(choice) {console.log('ONOPEN')}",
-          "_onSelect": "function(choice) {console.log('ONSELECT')}"
-        },
-        {
-          "name": "Electricity",
+          "name": "Default",
           "iconClass": "consumption",
           "icon": "consumption.svg",
           "nextStep": "end",
@@ -97,36 +37,5 @@
         },
       ]
     },
-    {
-      "title": "What type of Consumption?",
-      "name": "consumption-type",
-      "choices": [
-        {
-          "name": "Garbage",
-          "iconClass": "consumption",
-          "icon": "consumption.svg",
-          "nextStep": "end",
-          "_onOpen": "function(choice) {console.log('ONOPEN')}",
-          "_onSelect": "function(choice) {console.log('ONSELECT')}"
-        },
-        {
-          "name": "Recyclables",
-          "iconClass": "consumption",
-          "icon": "consumption.svg",
-          "nextStep": "end",
-          "_onOpen": "function(choice) {console.log('ONOPEN')}",
-          "_onSelect": "function(choice) {console.log('ONSELECT')}"
-        },
-        {
-          "name": "Yard Waste",
-          "iconClass": "consumption",
-          "icon": "consumption.svg",
-          "nextStep": "end",
-          "_onOpen": "function(choice) {console.log('ONOPEN')}",
-          "_onSelect": "function(choice) {console.log('ONSELECT')}"
-        },
-      ]
-    },
-
   ]
 }

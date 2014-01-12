@@ -8,8 +8,10 @@ define([
     'survey/views/custom-step-view',
     'survey/views/survey-complete-view',
 	'hbs!tmpl/survey/take-survey',
-    'handlebars',],
-function( Backbone, Communicator, metricSlidersView, stepsNavigatorView, stepsView, choicesView, customStepView, surveyCompleteView, takeSurveyTemp, Handlebars ){
+    'handlebars',
+    'application'
+],
+function( Backbone, Communicator, metricSlidersView, stepsNavigatorView, stepsView, choicesView, customStepView, surveyCompleteView, takeSurveyTemp, Handlebars, App ){
 	'use strict';
 
     Backbone.Marionette.Region.prototype.closeAnimate = function(view){
@@ -42,10 +44,28 @@ function( Backbone, Communicator, metricSlidersView, stepsNavigatorView, stepsVi
 
             // event is fired when a choice is clicked
     		Communicator.events.on('nextStep', function( stepName ){
+                switch(stepName.split(':')[0]) {
+                    case 'end':
+                        self.endSurvey();
+                        break;
+                    case 'chain':
+                        self.loadSurvey(stepName.split(':')[1])
+                        break;
+                    default:
+                        self.nextStep( stepName );
+                }
+                /*
     			if ( stepName == 'end' ) self.endSurvey(); 
                 else self.nextStep( stepName );
+                */
     		});
     	},
+        loadSurvey: function(surveyName) {
+            this.model.set('completed', true);
+            console.log('VAR: surveyName', surveyName);
+            var app = new App();
+            
+        },
 
     	onRender: function(){
     		var metrics = this.model.get('metrics'),

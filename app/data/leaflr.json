@@ -4,7 +4,7 @@
   "completed": true,
   "resultTitle": "By biking to work you saved",
   "theme": "leaflr",
-  "stepNavOn": false,
+  "stepNavOn": true,
   "metrics": [
     {
       "name": "gas",
