@@ -51,9 +51,19 @@ function( Backbone, Communicator, metricSlidersView, stepsNavigatorView, stepsVi
     		var metrics = this.model.get('metrics'),
                 steps   = this.model.get('steps');
 			
-			// initialize metric sliders
+			// Initialize metric sliders
     		this.metricSliders.show( new metricSlidersView({ collection: metrics }) );
-            this.stepNavigator.show( new stepsNavigatorView({ collection: steps }) );
+
+            /* Init Step Navigator
+             *  Step Navigator is optional via survey config
+             * ============================================= */
+            if(this.model.get('stepNavOn')) {
+                this.stepNavigator.show( new stepsNavigatorView({ collection: steps }) );
+            } else {
+                this.removeRegion('stepNavigator');    
+            }
+
+            // Initialize survey steps
             this.surveySteps.show( new stepsView({ collection: steps }) );
     	},
 

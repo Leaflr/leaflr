@@ -80,6 +80,7 @@ define([
             var survey = new surveyModel({
                 name: obj.name,
                 theme: obj.theme,
+                stepNavOn: obj.stepNavOn,
                 category: obj.category,
                 resultTitle: obj.resultTitle,
                 metrics: metricsArray,

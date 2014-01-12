@@ -5,6 +5,7 @@
   "resultTitle": "Setup Chlorophyll",
   "theme": "leaflr",
   "metrics": [],
+  "stepNavOn": false,
   "steps": [
     {
       "title": "How can you make an impact? Start by choosing ways you want to conserve.",

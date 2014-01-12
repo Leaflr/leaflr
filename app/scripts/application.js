@@ -23,7 +23,7 @@ function( Backbone, Communicator, surveyModel, stepModel, choiceModel, metricMod
 	});
 	
 	App.addInitializer(function(){
-	    App.takeSurvey.show( new takeSurvey({ model: Survey('cahps') }) );
+	    App.takeSurvey.show( new takeSurvey({ model: Survey('leaflr') }) );
 	});
 
 	return App;

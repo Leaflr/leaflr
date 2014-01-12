@@ -4,6 +4,7 @@
   "completed": true,
   "resultTitle": "Patient Experience",
   "theme": "leaflr",
+  "stepNavOn": false,
   "metrics": [],
   "steps": [
     {
