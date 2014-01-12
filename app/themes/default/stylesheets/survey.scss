@@ -123,18 +123,18 @@
 }
 .icon:before {
 	content: '';
-	width: 100%;
-	height: 50%;
+	width: 50%;
+	height: 100%;
 	position: absolute;
 	display: inline-block;
 	top: 0;
 	left: 0;
-	background-color: rgba(0,0,0,.02);
+	background-color: rgba(0,0,0,.04);
 }
 .icon:after {
 	content: '';
-	width: 100%;
-	height: 50%;
+	width: 50%;
+	height: 100%;
 	display: inline-block;
 	position: absolute;
 	top: 50%;
