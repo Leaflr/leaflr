@@ -1,5 +1,15 @@
-#metric-sliders, #survey-steps, .completed-surveys {
-	padding: 0 5%;
+#metric-sliders, #survey-steps, .completed-surveys, header {
+	padding: 0 25px;
+
+	@include media($mobile) {
+		padding: 0 10px;
+	}
+}
+
+#survey-steps {
+	@include media($mobile) {
+		padding: 0;
+	}
 }
 
 #step-navigator {
@@ -55,7 +65,6 @@
 	z-index: 0;
 	// box-shadow: inset 1px 1px 5px rgba(0,0,0,.17);
 
-
 	.ui-slider-handle {
 		width: 30px;
 		height: 30px;
@@ -71,10 +80,17 @@
 	position: relative;
 	text-align: center;
 	min-height: 275px;
-	overflow: hidden;
+	overflow-x: hidden;
+
+	@include media($mobile) {
+		margin-top: 0;
+	}
+
+	// overflow-y: auto;
 	
 	.steps {
 		position: relative;
+		@include clearfix;
 
 		.step {
 			width: 100%;
@@ -82,6 +98,13 @@
 			opacity: 0;
 			background-color: $light;
 			@include transform( translateX(1000px) );
+
+			h6 {
+				@include media($mobile) {
+					font-size: em(15);
+					margin: .5em 0 1em;
+				}
+			}
 
 			&:first-child {
 				opacity: 1;
@@ -93,75 +116,119 @@
 
 .choice {
 	@include span-columns(3);
+	font-size: em(18);
 	text-align: center;
+	margin-bottom: 30px;
+
+	p {
+		margin: 0;
+		line-height: 1em;
+	}
+
+	@include media($mobile) {
+  		width: 50%;
+  		margin-right: 0;
+  		font-size: em(16);
+	}
 }
+
+$icon-width: 150px;
+$icon-width-small: 90px;
+
 .icon-wrapper {
-	// width: 150px;
-	height: 150px;
+	height: $icon-width;
 	margin: 0 auto;
 	margin-bottom: 10px;
 	position: relative;
-}
-.icon {
-	width: 150px;
-	height: 150px;
-	border-radius: 50%;
-	overflow: hidden;
-	margin: 0 auto;
-	position: relative;
-	text-align: center;
-	background-color: #DDE2E8;
-}
-.icon img {
-	width: 100%;
-	height: auto;
-	position: relative;
-	z-index: 10;
-}
-.icon-red {
-	background-color: #C0392A;
-}
-.icon-svg {
-	position: absolute;
-	width: 100%;
-	max-width: 150px;
-	top: 0px;
-	margin-left: -74px;
-}
-.icon:before {
-	content: '';
-	width: 50%;
-	height: 100%;
-	position: absolute;
-	display: inline-block;
-	top: 0;
-	left: 0;
-	background-color: rgba(0,0,0,.02);
-}
-.icon:after {
-	content: '';
-	width: 50%;
-	height: 100%;
-	display: inline-block;
-	position: absolute;
-	top: 50%;
-	left: 0;
-	background-color: transparent;
+
+	@include media($mobile-small) {
+  		height: $icon-width-small;
+  		margin-bottom: 5px;
+	}
+
+	.icon {
+		width: $icon-width;
+		height: $icon-width;
+		border-radius: 50%;
+		overflow: hidden;
+		margin: 0 auto;
+		position: relative;
+		text-align: center;
+		background-color: #DDE2E8;
+
+		@include media($mobile-small) {
+  			width: $icon-width-small;
+  			height: $icon-width-small;
+		}
+
+		img {
+			width: 100%;
+			height: auto;
+			position: relative;
+		}
+		
+		&:before {
+			content: '';
+			width: 50%;
+			height: 100%;
+			position: absolute;
+			display: inline-block;
+			z-index: 0;
+			top: 0;
+			left: 0;
+			background-color: rgba(0,0,0,.02);
+		}
+
+		&:after {
+			content: '';
+			width: 50%;
+			height: 100%;
+			display: inline-block;
+			position: absolute;
+			z-index: 0;
+			top: 50%;
+			left: 0;
+			background-color: transparent;
+		}
+	}
+
+	.icon-svg {
+		position: absolute;
+		// z-index: 100;
+		width: 100%;
+		max-width: $icon-width;
+		top: 0px;
+		margin-left: -74px;
+
+		@include media($mobile-small) {
+			max-width: $icon-width-small;
+			width: 100%;
+			margin-left: -45px;
+  			// width: $icon-width-small;
+		}
+	}
+
+	.checked.icon-svg {
+		z-index: 1000;
+		
+	}
 }
 
 .not-checked, .not-checked .icon-svg {
-	-webkit-animation: notchecked 400ms cubic-bezier(0.610, 0.455, 0.000, 1);
-	-webkit-animation-fill-mode: both;
+	@include animation( notchecked 400ms );
+    @include animation-timing-function( cubic-bezier(0.610, 0.455, 0.000, 1) );
+	@include animation-fill-mode(both);
 }
 .checked.icon {
     background-color: #2EB36C;
-
-    -webkit-animation: checked 400ms cubic-bezier(0.610, 0.455, 0.000, 1);
-	-webkit-animation-fill-mode: both;
+    @include animation( checked 400ms );
+    @include animation-timing-function( cubic-bezier(0.610, 0.455, 0.000, 1) );
+	@include animation-fill-mode(both);
 }
 .checked.icon-svg {
-	-webkit-animation: rotateIn 400ms;
-	-webkit-animation-fill-mode: both;
+	@include animation( rotateIn 400ms );
+    @include animation-timing-function( cubic-bezier(0.610, 0.455, 0.000, 1) );
+	@include animation-fill-mode(both);
 }
 .checked.icon:before {
 	background-color: rgba(0,0,0,.05);
@@ -247,19 +314,56 @@
 /* METRIC INIDICATORS
 =====================*/
 
-.metric-sliders .slider {
-	width: 100%;
-	height: 16px;
-	background-color: #D4D5D9;
-	margin: 0 auto 8px;
-	position: relative;
-	text-align: center;
-	text-indent: -99999px;
-	border-radius: 10px;
-	// box-shadow: inset 1px 1px 5px rgba(0,0,0,.08);
+.metric-sliders {
+	margin-top: 7px;
+
 }
-.metric-sliders .value {
+.metric-sliders .slider {
 	height: 16px;
+	width: 100%;
+	margin-bottom: 8px;
+	position: relative;
+
+	@include media($mobile-small) {
+		height: 10px;
+		margin-bottom: 4px;
+	}
+
+	.metric-icon {
+		position: absolute;
+		left: -10px;
+		top: -10px;
+		z-index: 40;
+		width: 35px;
+		overflow: visible;
+
+	
+		@include media($mobile-small) {
+			width: 28px;
+			top: -9px;
+			left: -7px;
+		}
+	}
+}
+
+.metric-sliders .bg {
+	background-color: #D4D5D9;
+	width: 95%;
+	margin-left: 5%;
+	border-radius: 10px;
+	height: 100%;
+	position: relative;
+
+	@include media($mobile) {
+		width: 92%;
+		margin-left: 8%;
+	}
+}
+
+
+
+.metric-sliders .value {
+	height: 100%;
 	border-radius: 8px;
 	position: absolute;
 	z-index: 5;
@@ -279,7 +383,7 @@
         transition-timing-function: cubic-bezier(0.610, 0.455, 0.000, 1.135); /* custom */
 }
 .metric-sliders .past-value {
-	height: 16px;
+	height: 100%;
 	border-radius: 8px;
 	position: absolute;
 	top: 0;

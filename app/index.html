@@ -11,7 +11,7 @@
         <title>leaflr | Conservation Calculator.</title>
 
         <meta name="description" content="">
-        <meta name="viewport" content="width=device-width">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         
@@ -24,10 +24,19 @@
 
     <body>
         <div id="wrapper">
-            <header>
+            <header class="desktop">
                 <div class="page-title">Conservation Calculator.</div>
-                <div class="logo" onclick="location.href='http://leaflr.com';" style="cursor:pointer;">leaflr logo | Conservation Calculator.</div>
+                <h1 class="logo" onclick="location.href='http://leaflr.com';" style="cursor:pointer;">leaflr logo | Conservation Calculator.</h1>
+                <img class="leaflr-logo" src="themes/leaflr/images/logo-landscape.svg">
             </header>
+
+            <header class="mobile">
+                <div class="page-title">Conservation Calculatorr.</div>
+                <h1 class="logo" onclick="location.href='http://leaflr.com';" style="cursor:pointer;">leaflr logo | Conservation Calculator.</h1>
+                <img class="leaflr-logo" src="themes/leaflr/images/logo-landscape.svg">
+                <img class="nav-toggle" src="themes/leaflr/images/nav.svg">
+            </header>
+
             <div id="survey-choices-wrapper">
                 <div id="start-survey">
                     <!-- on load -->

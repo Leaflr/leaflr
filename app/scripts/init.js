@@ -30,6 +30,7 @@ require.config({
 
         'jquery-ui':'../components/jquery-ui/ui/minified/jquery-ui.min',
         'jquery-ui-touch-punch':'../components/jquery-ui-touch-punch/jquery.ui.touch-punch.min',
+        'fastclick-amd':'../components/fastclick-amd/fastclick',
 
         /* alias all marionette libs */
         'backbone.marionette': '../components/backbone.marionette/lib/core/amd/backbone.marionette',

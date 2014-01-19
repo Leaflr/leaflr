@@ -19,7 +19,8 @@
     "chai": "~1.7.2",
     "sinon": "~1.7.3",
     "jquery-ui-touch-punch": "*",
-    "jquery-ui": "~1.10.3"
+    "jquery-ui": "~1.10.3",
+    "fastclick-amd": "~0.6.9"
   },
   "directory": "components",
   "homepage": "https://github.com/Leaflr/leaflr",

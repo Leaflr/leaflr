@@ -10,6 +10,14 @@ $calories-color: #DEDE47;
 $oil-color: #232829;
 $light: #F0F1F5;
 
+
+/* MEDIA QUERIES
+==========================*/
+
+$mobile: new-breakpoint(max-width 800px);
+$mobile-small: new-breakpoint(max-width 500px);
+
+
 /* TYPOGRAPHY
 ==========================*/
 

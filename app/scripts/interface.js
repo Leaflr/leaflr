@@ -1,6 +1,8 @@
-define(['backbone','communicator'], function( Backbone, Communicator ){
+define(['backbone','communicator','fastclick-amd'], function( Backbone, Communicator, FastClick ){
 
 	var interfaceEvents = function(){
+
+		FastClick.attach(document.body)
 
 		var lastOption;
 
